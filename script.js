@@ -1,135 +1,118 @@
 /* ═══════════════════════════════════════════════════════════════
    Portfolio Script — Mrunal Shende
-   Features: scramble text · binary strips · theme toggle ·
-             nav console · scroll reveal · active nav link
+   Features: scramble hero · binary strips · letter animations ·
+             staggered cards · sidebar nav · theme toggle · console
    ═══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Initialize Lucide Icons ──
   if (window.lucide) lucide.createIcons();
 
 
   /* ══════════════════════════════════════════
-     Theme Toggle (dark / light)
+     Theme Toggle
      ══════════════════════════════════════════ */
-  const themeToggle = document.getElementById('themeToggle');
 
+  const themeToggle = document.getElementById('themeToggle');
   themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next    = current === 'dark' ? 'light' : 'dark';
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-    // Re-init icons since SVGs may need a repaint
     if (window.lucide) lucide.createIcons();
   });
 
 
   /* ══════════════════════════════════════════
-     Scramble Text Effect
+     Scramble Text (hero elements)
      ══════════════════════════════════════════ */
-  const SCRAMBLE_CHARS = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&';
 
-  function scramble(el, opts = {}) {
-    const finalText = el.textContent.trim();
-    const duration  = opts.duration  || 900;
-    const delay     = opts.delay     || 0;
+  const CHARS = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&';
 
-    let startTime = null;
+  function scramble(el, delay = 0) {
+    const final = el.textContent.trim();
+    const duration = Math.max(700, final.length * 55);
+    let start = null;
 
-    const frame = (ts) => {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const revealUpTo = Math.floor(progress * finalText.length);
+    const tick = (ts) => {
+      if (!start) start = ts;
+      const t = Math.min((ts - start) / duration, 1);
+      const resolved = Math.floor(t * final.length);
 
       let out = '';
-      for (let i = 0; i < finalText.length; i++) {
-        if (finalText[i] === ' ' || finalText[i] === '·' || finalText[i] === '&') {
-          out += finalText[i];
-        } else if (i < revealUpTo) {
-          out += finalText[i];
-        } else {
-          out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-        }
+      for (let i = 0; i < final.length; i++) {
+        const c = final[i];
+        if (c === ' ' || c === '·' || c === '&' || c === ',') { out += c; continue; }
+        out += i < resolved
+          ? c
+          : CHARS[Math.floor(Math.random() * CHARS.length)];
       }
-
       el.textContent = out;
 
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        el.textContent = finalText;
-      }
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = final;
     };
 
-    if (delay > 0) {
-      setTimeout(() => requestAnimationFrame(frame), delay);
-    } else {
-      requestAnimationFrame(frame);
-    }
+    setTimeout(() => requestAnimationFrame(tick), delay);
   }
 
-  // Run scramble on elements with data-scramble, staggered
-  const scrambleEls = document.querySelectorAll('[data-scramble]');
-  scrambleEls.forEach((el, i) => {
-    scramble(el, { duration: 850, delay: 200 + i * 120 });
+  document.querySelectorAll('[data-scramble]').forEach((el, i) => {
+    scramble(el, 300 + i * 140);
   });
 
 
   /* ══════════════════════════════════════════
-     Binary Strip Builder & Animator
+     Binary Strip Builder
      ══════════════════════════════════════════ */
-  function buildBinaryStrip(container) {
-    const ROWS      = 2;
-    const charWidth = 14; // approximate px per char at 0.65rem + letter-spacing
 
-    function generateRow() {
-      const count  = Math.ceil(window.innerWidth / charWidth) + 4;
-      const row    = document.createElement('div');
-      row.className = 'bin-row';
-      for (let i = 0; i < count; i++) {
-        const span = document.createElement('span');
-        span.className = 'bin-char';
-        span.textContent = Math.random() > 0.5 ? '1' : '0';
-        row.appendChild(span);
+  function buildBinaryRows(container, rows = 5) {
+    const charW = 13;
+
+    for (let r = 0; r < rows; r++) {
+      // Insert stripe bar between rows
+      if (r > 0 && r % 2 === 0) {
+        const bar = document.createElement('div');
+        bar.className = 'bin-stripe-bar';
+        container.appendChild(bar);
       }
-      return row;
+
+      const row = document.createElement('div');
+      row.className = 'bin-row';
+      const count = Math.ceil((window.innerWidth - 140) / charW) + 6;
+      for (let i = 0; i < count; i++) {
+        const sp = document.createElement('span');
+        sp.className = 'bin-char';
+        sp.textContent = Math.random() > 0.5 ? '1' : '0';
+        row.appendChild(sp);
+      }
+      container.appendChild(row);
     }
 
-    for (let r = 0; r < ROWS; r++) {
-      container.appendChild(generateRow());
-    }
-
-    // Random bit-flip animation
-    const allChars = () => container.querySelectorAll('.bin-char');
-
+    // Animate bit flips
     const flip = () => {
-      const chars = allChars();
+      const chars = container.querySelectorAll('.bin-char');
       if (!chars.length) return;
-      const flips = Math.floor(Math.random() * 4) + 1;
-      for (let f = 0; f < flips; f++) {
+      const n = Math.floor(Math.random() * 5) + 2;
+      for (let i = 0; i < n; i++) {
         const c = chars[Math.floor(Math.random() * chars.length)];
         c.textContent = c.textContent === '1' ? '0' : '1';
         c.classList.add('lit');
-        setTimeout(() => c.classList.remove('lit'), 280);
+        setTimeout(() => c.classList.remove('lit'), 300);
       }
     };
-
-    setInterval(flip, 130);
+    setInterval(flip, 110);
   }
 
   // Hero binary background
   const heroBinary = document.getElementById('heroBinary');
   if (heroBinary) {
-    const HERO_ROWS = 6;
-    for (let r = 0; r < HERO_ROWS; r++) {
-      const count = Math.ceil(window.innerWidth / 12) + 4;
-      const row   = document.createElement('div');
+    const rows = 7;
+    const charW = 11;
+    for (let r = 0; r < rows; r++) {
+      const row = document.createElement('div');
       row.className = 'bin-row';
+      const count = Math.ceil(window.innerWidth / charW) + 4;
       let txt = '';
-      for (let i = 0; i < count; i++) {
-        txt += (Math.random() > 0.5 ? '1' : '0') + ' ';
-      }
+      for (let i = 0; i < count; i++) txt += (Math.random() > 0.5 ? '1' : '0') + ' ';
       row.textContent = txt;
       heroBinary.appendChild(row);
     }
@@ -138,40 +121,117 @@ document.addEventListener('DOMContentLoaded', () => {
   // Section binary separators
   ['binSep1', 'binSep2', 'binSep3'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) buildBinaryStrip(el);
+    if (el) buildBinaryRows(el, 5);
   });
 
 
   /* ══════════════════════════════════════════
-     Nav Console — updates on scroll
+     Letter-by-letter Section Title Animation
      ══════════════════════════════════════════ */
-  const SECTION_LABELS = {
-    hero:         'INIT',
-    about:        'ABOUT',
-    research:     'RESEARCH',
-    experience:   'EXP',
-    projects:     'PROJECTS',
-    publications: 'PAPERS',
-    skills:       'SKILLS',
-    contact:      'CONTACT',
+
+  function wrapLetters(el) {
+    const text = el.textContent;
+    el.innerHTML = [...text].map(c =>
+      c === ' '
+        ? '<span class="ltr ltr-space"> </span>'
+        : `<span class="ltr">${c}</span>`
+    ).join('');
+  }
+
+  function animateLetters(el) {
+    const letters = el.querySelectorAll('.ltr:not(.ltr-space)');
+    letters.forEach((l, i) => {
+      setTimeout(() => {
+        l.style.transition = `opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94) , transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)`;
+        l.style.opacity = '1';
+        l.style.transform = 'translateY(0)';
+      }, i * 45);
+    });
+  }
+
+  const titleEls = document.querySelectorAll('.js-letters');
+  titleEls.forEach(el => wrapLetters(el));
+
+  const letterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateLetters(entry.target);
+        letterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  titleEls.forEach(el => letterObserver.observe(el));
+
+
+  /* ══════════════════════════════════════════
+     Staggered Card Entrance Animations
+     ══════════════════════════════════════════ */
+
+  function staggerCards(container, selector, delay = 100) {
+    if (!container) return;
+    const cardObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll(selector);
+          cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('card-visible'), i * delay);
+          });
+          cardObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    cardObs.observe(container);
+  }
+
+  staggerCards(document.getElementById('projectsGrid'),  '.project-card',   110);
+  staggerCards(document.getElementById('researchGrid'),   '.research-chip',   70);
+  staggerCards(document.getElementById('pubsList'),       '.pub-card',        90);
+  staggerCards(document.getElementById('skillsGrid'),     '.skills-group',   100);
+
+
+  /* ══════════════════════════════════════════
+     Scroll Reveal (.reveal elements)
+     ══════════════════════════════════════════ */
+
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+
+  /* ══════════════════════════════════════════
+     Nav Console — section label scramble
+     ══════════════════════════════════════════ */
+
+  const LABELS = {
+    hero: 'INIT', about: 'ABOUT', research: 'RESEARCH',
+    experience: 'EXP', projects: 'PROJECTS', publications: 'PAPERS',
+    skills: 'SKILLS', contact: 'CONTACT',
   };
 
   const consoleText = document.getElementById('consoleText');
+  let currentSection = '';
 
   function updateConsole(id) {
     if (!consoleText) return;
-    const label = SECTION_LABELS[id] || id.toUpperCase();
-    if (consoleText.textContent === label) return;
+    const label = LABELS[id] || id.toUpperCase();
+    if (consoleText.dataset.current === label) return;
+    consoleText.dataset.current = label;
 
-    // Brief scramble on the console label
-    const chars = '0123456789ABCDEF';
+    const hex = '0123456789ABCDEF';
     let ticks = 0;
-    const total = 8;
     const iv = setInterval(() => {
-      if (ticks < total - 2) {
+      if (ticks < 7) {
         let s = '';
         for (let i = 0; i < label.length; i++) {
-          s += label[i] === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)];
+          s += label[i] === ' ' ? ' ' : hex[Math.floor(Math.random() * hex.length)];
         }
         consoleText.textContent = s;
       } else {
@@ -179,82 +239,30 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(iv);
       }
       ticks++;
-    }, 35);
+    }, 32);
   }
 
-
-  /* ══════════════════════════════════════════
-     Navigation: scroll shadow
-     ══════════════════════════════════════════ */
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  setTimeout(() => updateConsole('hero'), 1200);
 
 
   /* ══════════════════════════════════════════
-     Navigation: mobile toggle
+     Sidebar: active link + console update
      ══════════════════════════════════════════ */
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
 
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('active');
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('active');
-    });
-  });
-
-
-  /* ══════════════════════════════════════════
-     Scroll Reveal (Intersection Observer)
-     ══════════════════════════════════════════ */
-  const revealEls = document.querySelectorAll('.reveal');
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    revealEls.forEach(el => observer.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('visible'));
-  }
-
-
-  /* ══════════════════════════════════════════
-     Active Nav Link + Console Update
-     ══════════════════════════════════════════ */
   const sections   = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-  let currentSection = 'hero';
+  const sbLinks    = document.querySelectorAll('.sb-link');
 
   const highlightNav = () => {
-    const scrollPos = window.scrollY + 140;
-
-    sections.forEach((section) => {
-      const top    = section.offsetTop;
-      const height = section.offsetHeight;
-      const id     = section.getAttribute('id');
-
-      if (scrollPos >= top && scrollPos < top + height) {
-        navAnchors.forEach(a => {
+    const pos = window.scrollY + 160;
+    sections.forEach(sec => {
+      const id  = sec.getAttribute('id');
+      const top = sec.offsetTop;
+      const bot = top + sec.offsetHeight;
+      if (pos >= top && pos < bot) {
+        sbLinks.forEach(a => {
           a.classList.remove('active');
           if (a.getAttribute('href') === `#${id}`) a.classList.add('active');
         });
-
         if (id !== currentSection) {
           currentSection = id;
           updateConsole(id);
@@ -266,15 +274,33 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', highlightNav, { passive: true });
   highlightNav();
 
-  // Trigger initial console label after scramble delay
-  setTimeout(() => updateConsole('hero'), 1400);
+
+  /* ══════════════════════════════════════════
+     Sidebar: mobile hamburger toggle
+     ══════════════════════════════════════════ */
+
+  const sbHamburger = document.getElementById('sbHamburger');
+  const sbLinksEl   = document.getElementById('sbLinks');
+
+  sbHamburger.addEventListener('click', () => {
+    sbLinksEl.classList.toggle('open');
+    sbHamburger.classList.toggle('active');
+  });
+
+  sbLinksEl.querySelectorAll('.sb-link').forEach(link => {
+    link.addEventListener('click', () => {
+      sbLinksEl.classList.remove('open');
+      sbHamburger.classList.remove('active');
+    });
+  });
 
 
   /* ══════════════════════════════════════════
      Smooth scroll fallback
      ══════════════════════════════════════════ */
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
