@@ -326,11 +326,14 @@
               </div>
               <h3 class="proj-title">mMIG for AQFP-Oriented Logic Optimization</h3>
               <p class="proj-desc">
-                Mixed majority-minority inverter graphs (mMIG) tailored for AQFP superconducting
-                circuit design, where every inverter on a fanout edge incurs extra Josephson junction
-                cost. Implements four optimization passes — minority seeding, dual-inversion
-                propagation, cone polarity flip, and CEC-guarded design-space exploration — on
-                12 EPFL benchmark circuits.
+                The <strong class="proj-em">first publicly available optimization tool for mMIG</strong>
+                (minority-Majority Inverter Graphs) — no prior toolchain existed for this graph class.
+                Accepts any commercial or research netlist format (.v, .blif, .aig), applies the full
+                suite of advanced resubstitution and graph-transformation rules, and returns a
+                provably optimised circuit. Designed for AQFP superconducting logic, where every
+                inverter on a fanout edge adds Josephson junction cost, the tool minimises that cost
+                through four targeted passes: minority seeding, dual-inversion propagation, cone
+                polarity flip, and CEC-guarded design-space exploration.
               </p>
               <div class="proj-metrics">
                 <div class="proj-metric">
@@ -351,10 +354,16 @@
                   </div>
                   <span class="proj-metric-lbl">JJ Proxy Cost</span>
                 </div>
+                <div class="proj-metric">
+                  <div class="proj-metric-val proj-metric-val--text">
+                    <span class="proj-metric-badge">1<span class="proj-metric-badge-sup">st</span></span>
+                  </div>
+                  <span class="proj-metric-lbl">of its kind</span>
+                </div>
               </div>
               <div class="proj-footer">
                 <div class="proj-stack">
-                  <span>C++17</span><span>Python</span><span>Mockturtle</span><span>EPFL Benchmarks</span><span>AQFP</span>
+                  <span>C++17</span><span>Python</span><span>Mockturtle</span><span>.v / .blif / .aig</span><span>AQFP</span><span>EPFL Benchmarks</span>
                 </div>
                 <a href="https://github.com/Mrunal321/mmig-esl-artifact" class="proj-link" target="_blank" rel="noopener">
                   GitHub <i data-lucide="arrow-up-right"></i>

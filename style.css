@@ -1311,6 +1311,12 @@ a:hover { color: var(--accent-soft); }
     margin-bottom: 1.5rem;
 }
 
+.proj-em {
+    color: var(--accent-soft);
+    font-weight: 600;
+    font-style: normal;
+}
+
 /* Numerical metrics (project 01) */
 .proj-metrics {
     display: flex;
@@ -1338,6 +1344,23 @@ a:hover { color: var(--accent-soft); }
 
 .mfx  { font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent); line-height: 1; }
 .msfx { font-family: var(--font-heading); font-size: 1rem;   color: var(--accent); line-height: 1; }
+
+.proj-metric-val--text { align-items: center; }
+
+.proj-metric-badge {
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    position: relative;
+}
+
+.proj-metric-badge-sup {
+    font-size: 0.85rem;
+    vertical-align: super;
+    letter-spacing: 0.02em;
+}
 
 .proj-metric-lbl {
     font-family: var(--font-mono);
