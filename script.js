@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardObs.observe(container);
   }
 
-  staggerCards(document.getElementById('projectsGrid'),  '.project-card',   110);
   staggerCards(document.getElementById('researchGrid'),   '.research-chip',   70);
   staggerCards(document.getElementById('pubsList'),       '.pub-card',        90);
   staggerCards(document.getElementById('skillsGrid'),     '.skills-group',   100);
@@ -487,6 +486,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     obs.observe(container);
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Project list — entrance + counters + highlights
+     ══════════════════════════════════════════ */
+
+  (function initProjects() {
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    function animateFloat(el, target, dec, dur) {
+      let t0 = null;
+      const tick = ts => {
+        if (!t0) t0 = ts;
+        const f = Math.min((ts - t0) / dur, 1);
+        el.textContent = (easeOut(f) * target).toFixed(dec);
+        if (f < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toFixed(dec);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const item = entry.target;
+
+        item.classList.add('proj-visible');
+
+        // Float metric counters
+        item.querySelectorAll('.proj-count').forEach(el => {
+          animateFloat(
+            el,
+            parseFloat(el.dataset.target),
+            parseInt(el.dataset.dec || '0', 10),
+            1500
+          );
+        });
+
+        // Stagger highlight bullets
+        item.querySelectorAll('.proj-hl').forEach((hl, i) => {
+          setTimeout(() => hl.classList.add('hl-show'), 280 + i * 110);
+        });
+
+        obs.unobserve(item);
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.proj-item').forEach(el => obs.observe(el));
   })();
 
 
