@@ -589,4 +589,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Timeline v2 animations ──────────────────────
+     Draw line once wrap enters view; stagger each
+     card in from the right as it crosses the fold.
+     ══════════════════════════════════════════════ */
+  (function initTimeline() {
+    const wrap = document.getElementById('tlWrap');
+    if (!wrap) return;
+
+    const lineObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { wrap.classList.add('tl-line-drawn'); lineObs.disconnect(); }
+    }, { threshold: 0.08 });
+    lineObs.observe(wrap);
+
+    const items = Array.from(wrap.querySelectorAll('.tl-item'));
+    const cardObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const idx = items.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('tl-show'), idx * 130);
+        cardObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.14 });
+    items.forEach(el => cardObs.observe(el));
+  })();
+
 });

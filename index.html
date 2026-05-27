@@ -249,76 +249,96 @@
           <span class="section-label">03</span>
           <h2 class="section-title js-letters">Experience &amp; Education</h2>
         </div>
-        <div class="timeline reveal">
+        <div class="tl-wrap" id="tlWrap">
 
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">PhD Candidate</h3>
-                  <p class="timeline-org">IIT Indore · Department of Computer Science &amp; Engineering</p>
-                </div>
-                <span class="timeline-period">2023 – Present</span>
+          <!-- PhD -->
+          <div class="tl-item" data-type="phd">
+            <div class="tl-marker">
+              <i data-lucide="cpu"></i>
+            </div>
+            <div class="tl-card">
+              <div class="tl-top">
+                <span class="tl-chip">Doctorate · Research</span>
+                <span class="tl-period">2023 – Present</span>
               </div>
-              <ul class="timeline-details">
+              <h3 class="tl-role">PhD Candidate</h3>
+              <p class="tl-org">IIT Indore · Dept. of Computer Science &amp; Engineering</p>
+              <ul class="tl-details">
                 <li>Developing solver-guided techniques for MIG and mMIG optimization, targeting area and depth reduction in logic networks.</li>
-                <li>Designed and implemented benchmarking and evaluation pipelines for FPGA/ASIC synthesis flows, enabling reproducible comparison of optimization strategies.</li>
-                <li>Investigated secure logic synthesis methods using majority-based graph transformations to improve resilience against structural attacks.</li>
-                <li>Built automation frameworks for running large-scale experiments across standard benchmark suites (EPFL, ISCAS, MCNC).</li>
+                <li>Designed benchmarking pipelines for FPGA/ASIC synthesis flows enabling reproducible comparison of optimization strategies.</li>
+                <li>Investigated secure logic synthesis methods using majority-based graph transformations against structural attacks.</li>
+                <li>Built automation frameworks across EPFL, ISCAS, and MCNC benchmark suites.</li>
               </ul>
+              <div class="tl-tags">
+                <span>Logic Synthesis</span><span>mMIG / MIG</span><span>EDA Algorithms</span><span>C++</span><span>CP-SAT</span><span>FPGA / ASIC</span>
+              </div>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">M.Tech — CSE (Cyber Security)</h3>
-                  <p class="timeline-org">National Institute of Technology Kurukshetra · Haryana</p>
-                </div>
-                <span class="timeline-period">2021 – 2023</span>
+          <!-- M.Tech -->
+          <div class="tl-item" data-type="mtech">
+            <div class="tl-marker">
+              <i data-lucide="shield"></i>
+            </div>
+            <div class="tl-card">
+              <div class="tl-top">
+                <span class="tl-chip">Masters · Research</span>
+                <span class="tl-period">2021 – 2023</span>
               </div>
-              <ul class="timeline-details">
-                <li>Conducted research on shilling attack detection in collaborative filtering recommender systems, combining supervised ML and behavioural profiling methods.</li>
-                <li>Published two conference papers (ICFCS 2023, ITM Web of Conferences 2023) and one article (Insights2Techinfo 2021) on recommender system security and cyber-physical systems.</li>
-                <li>Explored intersection of cyber security techniques and intelligent transportation systems (ITS).</li>
+              <h3 class="tl-role">M.Tech — CSE (Cyber Security)</h3>
+              <p class="tl-org">NIT Kurukshetra · Haryana</p>
+              <ul class="tl-details">
+                <li>Researched shilling attack detection in collaborative filtering recommender systems, combining supervised ML with behavioural profiling.</li>
+                <li>Published two conference papers (ICFCS 2023, ITM Web 2023) and one article on recommender system security and cyber-physical systems.</li>
+                <li>Explored cyber security techniques at the intersection of machine learning and intelligent transportation systems (ITS).</li>
               </ul>
+              <div class="tl-tags">
+                <span>Cyber Security</span><span>Machine Learning</span><span>Recommender Systems</span><span>Python</span><span>Attack Detection</span>
+              </div>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">EDA Intern</h3>
-                  <p class="timeline-org">Synopsys India Pvt. Ltd.</p>
-                </div>
-                <span class="timeline-period">2020 – 2021</span>
+          <!-- Synopsys -->
+          <div class="tl-item" data-type="industry">
+            <div class="tl-marker">
+              <i data-lucide="building-2"></i>
+            </div>
+            <div class="tl-card">
+              <div class="tl-top">
+                <span class="tl-chip">Industry · Internship</span>
+                <span class="tl-period">2020 – 2021</span>
               </div>
-              <ul class="timeline-details">
+              <h3 class="tl-role">EDA Intern</h3>
+              <p class="tl-org">Synopsys India Pvt. Ltd.</p>
+              <ul class="tl-details">
                 <li>Contributed to production-grade logic synthesis tools used in commercial ASIC design flows.</li>
-                <li>Worked on optimization passes that improved timing and area for standard cell–based designs.</li>
-                <li>Gained hands-on experience with industrial EDA infrastructure, strengthening understanding of scalability and robustness requirements in synthesis tools.</li>
+                <li>Worked on optimization passes improving timing closure and area for standard cell–based designs.</li>
+                <li>Gained hands-on experience with industrial EDA infrastructure and synthesis tool scalability.</li>
               </ul>
+              <div class="tl-tags">
+                <span>Logic Synthesis</span><span>ASIC</span><span>Design Compiler</span><span>TCL</span><span>Timing Closure</span>
+              </div>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">B.E. — Computer Science &amp; Engineering</h3>
-                  <p class="timeline-org">DY Patil Institute of Technology · Mumbai University</p>
-                </div>
-                <span class="timeline-period">2016 – 2020</span>
+          <!-- B.E. -->
+          <div class="tl-item" data-type="be">
+            <div class="tl-marker">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="tl-card">
+              <div class="tl-top">
+                <span class="tl-chip">Bachelors · Engineering</span>
+                <span class="tl-period">2016 – 2020</span>
               </div>
-              <ul class="timeline-details">
-                <li>Undergraduate studies in Computer Science with foundational coursework in algorithms, data structures, operating systems, and computer networks.</li>
+              <h3 class="tl-role">B.E. — Computer Science &amp; Engineering</h3>
+              <p class="tl-org">DY Patil Institute of Technology · Mumbai University</p>
+              <ul class="tl-details">
+                <li>Undergraduate studies in Computer Science covering algorithms, data structures, operating systems, and computer networks.</li>
               </ul>
+              <div class="tl-tags">
+                <span>Algorithms</span><span>Data Structures</span><span>Networks</span><span>C / C++</span>
+              </div>
             </div>
           </div>
 
