@@ -302,8 +302,14 @@ a:hover { color: var(--accent-soft); }
     width: 22px; height: 2px;
     background: var(--text);
     border-radius: 2px;
-    transition: var(--duration) var(--ease);
+    transition: transform var(--duration) var(--ease),
+                opacity  var(--duration) var(--ease);
 }
+
+/* Hamburger → ✕ when menu is open */
+.sb-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.sb-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.sb-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 
 /* ═══════════════════════════════════════════
