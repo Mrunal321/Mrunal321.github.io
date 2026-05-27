@@ -1,27 +1,27 @@
 /* ═══════════════════════════════════════════════════════════════
    Design System — Mrunal Shende Academic Portfolio
-   Dark red-black · Sidebar nav · wodniack-inspired
+   Dark slate-violet · Sidebar nav · wodniack-inspired
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-    /* ── Dark Theme (default) — deep red-black ── */
-    --bg:            #140000;
-    --bg-alt:        #1a0404;
-    --bg-card:       #220808;
-    --bg-card-hover: #2c0e0e;
-    --text:          #ede8e0;
-    --text-secondary:#9a9088;
-    --text-muted:    #5a5250;
-    --accent:        #5eaaa2;
-    --accent-soft:   #7cc4bc;
-    --accent-bg:     rgba(94, 170, 162, 0.10);
-    --accent-border: rgba(94, 170, 162, 0.30);
-    --border:        rgba(237, 232, 224, 0.07);
-    --border-hover:  rgba(237, 232, 224, 0.14);
-    --binary-color:  rgba(94, 170, 162, 0.35);
-    --binary-lit:    rgba(124, 196, 188, 0.85);
-    --binary-bg:     #0e0000;
-    --stripe-color:  rgba(94, 170, 162, 0.18);
+    /* ── Dark Theme (default) — deep slate + violet ── */
+    --bg:            #0f0f1a;
+    --bg-alt:        #131326;
+    --bg-card:       #16162a;
+    --bg-card-hover: #1d1d38;
+    --text:          #e8e6f0;
+    --text-secondary:#9490b5;
+    --text-muted:    #5a5575;
+    --accent:        #a78bfa;
+    --accent-soft:   #c4b5fd;
+    --accent-bg:     rgba(167, 139, 250, 0.10);
+    --accent-border: rgba(167, 139, 250, 0.30);
+    --border:        rgba(232, 230, 240, 0.07);
+    --border-hover:  rgba(232, 230, 240, 0.15);
+    --binary-color:  rgba(167, 139, 250, 0.32);
+    --binary-lit:    rgba(196, 181, 253, 0.85);
+    --binary-bg:     #080812;
+    --stripe-color:  rgba(167, 139, 250, 0.15);
 
     /* ── Typography ── */
     --font-heading: 'Source Serif 4', 'Georgia', serif;
@@ -1660,7 +1660,7 @@ a:hover { color: var(--accent-soft); }
     top: calc(var(--space-xl) + 1rem);
 }
 .proj-term {
-    background: #05000c;
+    background: #080814;
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
