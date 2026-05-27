@@ -1114,20 +1114,69 @@ a:hover { color: var(--accent-soft); }
 }
 
 
-/* About bio paragraph */
-.about-bio {
+/* About research pillars */
+.about-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
     margin-top: var(--space-xl);
-    padding: var(--space-lg) var(--space-xl);
-    border-left: 2px solid var(--accent-border);
-    background: var(--accent-bg);
-    border-radius: 0 8px 8px 0;
 }
 
-.about-bio p {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--text-secondary);
+.ap-item {
+    display: flex;
+    gap: 0.9rem;
+    padding: 1.25rem 1.1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    border-radius: 0 0 8px 8px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s var(--ease), transform 0.55s var(--ease),
+                border-color var(--duration) var(--ease),
+                background var(--duration) var(--ease);
+}
+
+.about-pillars.visible .ap-item           { opacity: 1; transform: none; }
+.about-pillars.visible .ap-item:nth-child(2) { transition-delay: 0.12s; }
+.about-pillars.visible .ap-item:nth-child(3) { transition-delay: 0.24s; }
+
+.ap-item:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-border);
+    border-top-color: var(--accent-soft);
+}
+
+.ap-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    opacity: 0.55;
+    padding-top: 3px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+}
+
+.ap-title {
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.4rem;
+    line-height: 1.3;
+}
+
+.ap-desc {
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    color: var(--text-muted);
     margin: 0;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 700px) {
+    .about-pillars { grid-template-columns: 1fr; }
 }
 
 
