@@ -1,27 +1,27 @@
 /* ═══════════════════════════════════════════════════════════════
    Design System — Mrunal Shende Academic Portfolio
-   Dark slate-violet · Sidebar nav · wodniack-inspired
+   Catppuccin Mocha · Sidebar nav · wodniack-inspired
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-    /* ── Dark Theme (default) — deep slate + violet ── */
-    --bg:            #0f0f1a;
-    --bg-alt:        #131326;
-    --bg-card:       #16162a;
-    --bg-card-hover: #1d1d38;
-    --text:          #e8e6f0;
-    --text-secondary:#9490b5;
-    --text-muted:    #5a5575;
-    --accent:        #a78bfa;
-    --accent-soft:   #c4b5fd;
-    --accent-bg:     rgba(167, 139, 250, 0.10);
-    --accent-border: rgba(167, 139, 250, 0.30);
-    --border:        rgba(232, 230, 240, 0.07);
-    --border-hover:  rgba(232, 230, 240, 0.15);
-    --binary-color:  rgba(167, 139, 250, 0.32);
-    --binary-lit:    rgba(196, 181, 253, 0.85);
-    --binary-bg:     #080812;
-    --stripe-color:  rgba(167, 139, 250, 0.15);
+    /* ── Dark Theme (default) — Catppuccin Mocha ── */
+    --bg:            #1e1e2e;
+    --bg-alt:        #181825;
+    --bg-card:       #313244;
+    --bg-card-hover: #45475a;
+    --text:          #cdd6f4;
+    --text-secondary:#a6adc8;
+    --text-muted:    #6c7086;
+    --accent:        #cba6f7;
+    --accent-soft:   #b4befe;
+    --accent-bg:     rgba(203, 166, 247, 0.10);
+    --accent-border: rgba(203, 166, 247, 0.30);
+    --border:        rgba(205, 214, 244, 0.07);
+    --border-hover:  rgba(205, 214, 244, 0.15);
+    --binary-color:  rgba(203, 166, 247, 0.30);
+    --binary-lit:    rgba(203, 166, 247, 0.88);
+    --binary-bg:     #11111b;
+    --stripe-color:  rgba(203, 166, 247, 0.10);
 
     /* ── Typography ── */
     --font-heading: 'Source Serif 4', 'Georgia', serif;
@@ -1660,7 +1660,7 @@ a:hover { color: var(--accent-soft); }
     top: calc(var(--space-xl) + 1rem);
 }
 .proj-term {
-    background: #080814;
+    background: #11111b;
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
