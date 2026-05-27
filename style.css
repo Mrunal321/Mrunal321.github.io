@@ -578,7 +578,7 @@ a:hover { color: var(--accent-soft); }
     font-weight: 500;
     color: var(--accent);
     letter-spacing: 0.1em;
-    display: block;
+    display: none;
     margin-bottom: var(--space-sm);
 }
 
