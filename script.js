@@ -296,6 +296,201 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ══════════════════════════════════════════
+     Mouse Parallax — hero floating glyphs
+     ══════════════════════════════════════════ */
+
+  (function initMouseParallax() {
+    const floats = document.querySelectorAll('.hf');
+    if (!floats.length) return;
+
+    document.addEventListener('mousemove', e => {
+      const { innerWidth: w, innerHeight: h } = window;
+      const dx = (e.clientX / w - 0.5) * 2;
+      const dy = (e.clientY / h - 0.5) * 2;
+      floats.forEach(el => {
+        const s = parseFloat(el.dataset.speed || '0.03');
+        el.style.setProperty('--tx', `${dx * s * 130}px`);
+        el.style.setProperty('--ty', `${dy * s * 130}px`);
+      });
+    });
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Scroll Parallax — hero layers
+     ══════════════════════════════════════════ */
+
+  (function initScrollParallax() {
+    const heroContent = document.querySelector('.hero-content');
+    const heroBinary  = document.getElementById('heroBinary');
+    const floats      = document.querySelectorAll('.hf');
+
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY;
+      if (sy > window.innerHeight * 1.2) return;
+
+      if (heroContent) heroContent.style.transform = `translateY(${sy * 0.14}px)`;
+      if (heroBinary)  heroBinary.style.transform  = `translateY(${sy * 0.32}px)`;
+
+      floats.forEach(el => {
+        const s = parseFloat(el.dataset.scrollspeed || '0.1');
+        el.style.setProperty('--sy', `${sy * s}px`);
+      });
+    }, { passive: true });
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Animated Stat Counters
+     ══════════════════════════════════════════ */
+
+  (function initCounters() {
+    const els = document.querySelectorAll('.count-up');
+    if (!els.length) return;
+
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el  = entry.target;
+        const end = parseInt(el.dataset.target, 10);
+        let t0 = null;
+        const tick = ts => {
+          if (!t0) t0 = ts;
+          const f = Math.min((ts - t0) / 1400, 1);
+          el.textContent = Math.round(easeOut(f) * end);
+          if (f < 1) requestAnimationFrame(tick);
+          else el.textContent = end;
+        };
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    els.forEach(el => obs.observe(el));
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Terminal Typewriter
+     ══════════════════════════════════════════ */
+
+  (function initTerminal() {
+    const body = document.getElementById('termBody');
+    if (!body) return;
+
+    const SCRIPT = [
+      { t: 'cmd', s: 'whoami' },
+      { t: 'out', s: 'mrunal · PhD Candidate · IIT Indore CSE' },
+      { t: 'cmd', s: 'cat research.txt' },
+      { t: 'out', s: 'Logic Synthesis · MIG/mMIG · SAT · EDA' },
+      { t: 'cmd', s: 'ls ./publications/ | wc -l' },
+      { t: 'out', s: '4  (IEEE ESL 2025, ISVLSI 2024 + 2 more)' },
+      { t: 'cmd', s: 'echo $MISSION' },
+      { t: 'out', s: 'Formal methods → measurable hardware gains' },
+    ];
+
+    let started = false;
+
+    const run = () => {
+      if (started) return;
+      started = true;
+
+      const cursor = document.createElement('div');
+      cursor.className = 'term-line';
+      cursor.innerHTML = '<span class="term-prompt">$ </span><span id="termTyped"></span><span class="term-cur"></span>';
+      body.appendChild(cursor);
+
+      let si = 0;
+
+      const next = () => {
+        if (si >= SCRIPT.length) return;
+        const step = SCRIPT[si++];
+
+        if (step.t === 'cmd') {
+          let ci = 0;
+          const iv = setInterval(() => {
+            const typed = document.getElementById('termTyped');
+            if (typed) typed.textContent = step.s.slice(0, ++ci);
+            if (ci >= step.s.length) {
+              clearInterval(iv);
+              setTimeout(() => {
+                const d = document.createElement('div');
+                d.className = 'term-line';
+                d.innerHTML = `<span class="term-prompt">$ </span><span class="term-cmd">${step.s}</span>`;
+                body.insertBefore(d, cursor);
+                const t2 = document.getElementById('termTyped');
+                if (t2) t2.textContent = '';
+                next();
+              }, 280);
+            }
+          }, 44);
+        } else {
+          const d = document.createElement('div');
+          d.className = 'term-line term-out';
+          d.textContent = step.s;
+          body.insertBefore(d, cursor);
+          setTimeout(next, 380);
+        }
+      };
+
+      setTimeout(next, 500);
+    };
+
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { run(); obs.disconnect(); }
+    }, { threshold: 0.3 });
+
+    obs.observe(body);
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Focus Bar Fill Animation
+     ══════════════════════════════════════════ */
+
+  (function initFocusBars() {
+    const container = document.querySelector('.about-focus');
+    if (!container) return;
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        container.querySelectorAll('.focus-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = (bar.dataset.w || '80') + '%'; }, i * 140);
+        });
+        obs.unobserve(container);
+      });
+    }, { threshold: 0.4 });
+
+    obs.observe(container);
+  })();
+
+
+  /* ══════════════════════════════════════════
+     Badge Entrance Stagger
+     ══════════════════════════════════════════ */
+
+  (function initBadges() {
+    const container = document.querySelector('.about-badges');
+    if (!container) return;
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        container.querySelectorAll('.id-badge').forEach((b, i) => {
+          setTimeout(() => b.classList.add('badge-show'), 60 + i * 90);
+        });
+        obs.unobserve(container);
+      });
+    }, { threshold: 0.2 });
+
+    obs.observe(container);
+  })();
+
+
+  /* ══════════════════════════════════════════
      3D Tilt + Mouse Glow (project cards)
      ══════════════════════════════════════════ */
 

@@ -88,6 +88,19 @@
     <!-- ─────────────────── Hero ─────────────────── -->
     <section class="hero" id="hero">
       <div class="hero-binary" id="heroBinary" aria-hidden="true"></div>
+
+      <!-- Mouse-parallax floating glyphs -->
+      <div class="hero-floats" id="heroFloats" aria-hidden="true">
+        <span class="hf hf-1" data-speed="0.025" data-scrollspeed="0.08">01101</span>
+        <span class="hf hf-2" data-speed="0.048" data-scrollspeed="0.16">⊕</span>
+        <span class="hf hf-3" data-speed="0.016" data-scrollspeed="0.05">MAJ</span>
+        <span class="hf hf-4" data-speed="0.036" data-scrollspeed="0.12">001</span>
+        <span class="hf hf-5" data-speed="0.062" data-scrollspeed="0.22">∧</span>
+        <span class="hf hf-6" data-speed="0.021" data-scrollspeed="0.07">MIG</span>
+        <span class="hf hf-7" data-speed="0.042" data-scrollspeed="0.14">11010</span>
+        <span class="hf hf-8" data-speed="0.055" data-scrollspeed="0.19">¬</span>
+      </div>
+
       <div class="container hero-content">
         <div class="hero-eyebrow">
           <span class="hero-label" data-scramble>PhD Candidate</span>
@@ -126,32 +139,65 @@
           <span class="section-label">01</span>
           <h2 class="section-title js-letters">About</h2>
         </div>
-        <div class="about-content reveal">
-          <div class="about-text">
-            <p>
-              I am a PhD candidate at the Department of Computer Science and Engineering, IIT Indore,
-              working on logic synthesis and optimization for digital circuits. My research sits at the
-              intersection of formal methods, combinatorial optimization, and electronic design automation.
-            </p>
-            <p>
-              My work focuses on developing solver-guided optimization techniques for emerging circuit
-              representations—particularly Majority-Inverter Graphs (MIG) and their variants. I design and
-              implement algorithms that improve area, delay, and structural properties of logic networks,
-              with an emphasis on approaches that can be validated through FPGA and ASIC evaluation flows.
-            </p>
-            <p>
-              Beyond the algorithmic work, I build practical toolchains and benchmarking pipelines that
-              make research outcomes reproducible and comparable. I am drawn to problems where mathematical
-              rigor meets engineering implementation—where a well-formulated optimization objective can
-              translate into measurable gains in real hardware metrics.
-            </p>
-            <p>
-              I also have industry experience from my time at Synopsys, where I contributed to
-              production-grade EDA tools, grounding my research perspective in the realities of
-              large-scale design workflows.
-            </p>
+
+        <!-- Animated stat counters -->
+        <div class="about-stats reveal">
+          <div class="stat-block">
+            <div class="stat-numrow"><span class="count-up" data-target="4">0</span><span class="stat-plus">+</span></div>
+            <span class="stat-desc">Years<br>PhD Research</span>
+          </div>
+          <div class="stat-block">
+            <div class="stat-numrow"><span class="count-up" data-target="4">0</span></div>
+            <span class="stat-desc">Published<br>Papers</span>
+          </div>
+          <div class="stat-block">
+            <div class="stat-numrow"><span class="count-up" data-target="5">0</span></div>
+            <span class="stat-desc">Open-Source<br>Projects</span>
+          </div>
+          <div class="stat-block">
+            <div class="stat-numrow"><span class="count-up" data-target="1">0</span></div>
+            <span class="stat-desc">Industry<br>Internship</span>
           </div>
         </div>
+
+        <!-- Two-column: terminal + identity/focus -->
+        <div class="about-panels">
+
+          <!-- Terminal window -->
+          <div class="about-terminal reveal">
+            <div class="term-titlebar">
+              <span class="term-dot tdot-r"></span>
+              <span class="term-dot tdot-y"></span>
+              <span class="term-dot tdot-g"></span>
+              <span class="term-name">mrunal@iiti:~</span>
+            </div>
+            <div class="term-body" id="termBody"></div>
+          </div>
+
+          <!-- Right column -->
+          <div class="about-right reveal">
+
+            <!-- Identity badges -->
+            <div class="about-badges">
+              <div class="id-badge"><i data-lucide="map-pin"></i><span>IIT Indore, India</span></div>
+              <div class="id-badge"><i data-lucide="cpu"></i><span>Logic Synthesis · EDA</span></div>
+              <div class="id-badge"><i data-lucide="building-2"></i><span>Ex Synopsys India</span></div>
+              <div class="id-badge"><i data-lucide="graduation-cap"></i><span>PhD 2021 – Present</span></div>
+              <div class="id-badge id-badge-accent"><i data-lucide="zap"></i><span>Open to Collaborations</span></div>
+            </div>
+
+            <!-- Focus bars -->
+            <div class="about-focus">
+              <div class="focus-row"><span class="focus-label">Logic Synthesis</span><div class="focus-track"><div class="focus-fill" data-w="92"></div></div></div>
+              <div class="focus-row"><span class="focus-label">EDA Algorithms</span><div class="focus-track"><div class="focus-fill" data-w="85"></div></div></div>
+              <div class="focus-row"><span class="focus-label">Hardware Security</span><div class="focus-track"><div class="focus-fill" data-w="70"></div></div></div>
+              <div class="focus-row"><span class="focus-label">FPGA Evaluation</span><div class="focus-track"><div class="focus-fill" data-w="76"></div></div></div>
+              <div class="focus-row"><span class="focus-label">Formal Methods</span><div class="focus-track"><div class="focus-fill" data-w="64"></div></div></div>
+            </div>
+
+          </div><!-- /.about-right -->
+        </div><!-- /.about-panels -->
+
       </div>
     </section>
 
