@@ -47,25 +47,25 @@
     --duration: 0.3s;
 }
 
-/* ── Light Mode Override ── */
+/* ── Light Mode — Warm Paper + Deep Indigo ── */
 [data-theme="light"] {
-    --bg:            #faf8f4;
-    --bg-alt:        #f5f1ea;
+    --bg:            #fefdf8;
+    --bg-alt:        #f0ecfa;
     --bg-card:       #ffffff;
-    --bg-card-hover: #f0ece4;
-    --text:          #0f1a2e;
-    --text-secondary:#4a5f82;
-    --text-muted:    #7a8da8;
-    --accent:        #5b8a82;
-    --accent-soft:   #7aa89f;
-    --accent-bg:     rgba(91, 138, 130, 0.08);
-    --accent-border: rgba(91, 138, 130, 0.25);
-    --border:        rgba(15, 26, 46, 0.08);
-    --border-hover:  rgba(15, 26, 46, 0.16);
-    --binary-color:  rgba(91, 138, 130, 0.30);
-    --binary-lit:    rgba(91, 138, 130, 0.75);
-    --binary-bg:     #e8e2d8;
-    --stripe-color:  rgba(91, 138, 130, 0.15);
+    --bg-card-hover: #f3eeff;
+    --text:          #140d2e;
+    --text-secondary:#3b2e6b;
+    --text-muted:    #6b5fa0;
+    --accent:        #4f35e0;
+    --accent-soft:   #7a67e8;
+    --accent-bg:     rgba(79, 53, 224, 0.07);
+    --accent-border: rgba(79, 53, 224, 0.24);
+    --border:        rgba(20, 13, 46, 0.09);
+    --border-hover:  rgba(20, 13, 46, 0.18);
+    --binary-color:  rgba(79, 53, 224, 0.20);
+    --binary-lit:    rgba(79, 53, 224, 0.65);
+    --binary-bg:     #e6e0f8;
+    --stripe-color:  rgba(79, 53, 224, 0.09);
 }
 
 
@@ -758,7 +758,7 @@ a:hover { color: var(--accent-soft); }
     min-height: 300px;
 }
 
-[data-theme="light"] .about-terminal { background: #0d1117; }
+[data-theme="light"] .about-terminal { background: #0f0a22; border-color: rgba(79,53,224,0.22); }
 
 .term-titlebar {
     display: flex;
@@ -1133,9 +1133,9 @@ a:hover { color: var(--accent-soft); }
 }
 
 /* Light mode adjustments */
-[data-theme="light"] .tl-card  { background: #f7f4f0; }
-[data-theme="light"] .tl-marker { background: #e8e4de; }
-[data-theme="light"] .tl-tags span { background: #ede8e0; }
+[data-theme="light"] .tl-card      { background: #fefcff; }
+[data-theme="light"] .tl-marker   { background: #ede8fa; }
+[data-theme="light"] .tl-tags span { background: #f0ecf8; }
 
 
 /* ═══════════════════════════════════════════
@@ -1280,7 +1280,7 @@ a:hover { color: var(--accent-soft); }
     padding: 2px 8px;
     border-radius: 4px;
 }
-[data-theme="light"] .project-tech span { background: rgba(15,26,46,0.04); }
+[data-theme="light"] .project-tech span { background: rgba(79,53,224,0.05); }
 
 .project-link {
     display: flex;
@@ -1645,7 +1645,7 @@ a:hover { color: var(--accent-soft); }
     border-color: var(--accent-border);
 }
 
-[data-theme="light"] .proj-stack span { background: rgba(15, 26, 46, 0.04); }
+[data-theme="light"] .proj-stack span { background: rgba(79,53,224,0.05); }
 
 .proj-link {
     display: inline-flex;
@@ -1863,7 +1863,7 @@ a:hover { color: var(--accent-soft); }
     color: var(--accent);
     border-color: var(--accent-border);
 }
-[data-theme="light"] .skills-tags span { background: rgba(15,26,46,0.04); }
+[data-theme="light"] .skills-tags span { background: rgba(79,53,224,0.05); }
 
 
 /* ═══════════════════════════════════════════
@@ -2031,4 +2031,102 @@ a:hover { color: var(--accent-soft); }
     .hero-actions   { flex-direction: column; }
     .hero-actions .btn { width: 100%; justify-content: center; }
     .bin-rows       { padding: 0.6rem 1.5rem; }
+}
+
+
+/* ═══════════════════════════════════════════
+   Light Mode — Element Polish
+   ═══════════════════════════════════════════ */
+
+/* Hero: indigo radial glow instead of flat bg */
+[data-theme="light"] .hero {
+    background:
+        radial-gradient(ellipse 70% 60% at 65% 30%, rgba(79,53,224,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(79,53,224,0.04) 0%, transparent 60%),
+        var(--bg);
+}
+
+/* Alt sections get a very soft lavender wash */
+[data-theme="light"] .section-alt {
+    background: linear-gradient(160deg, #f0ecfa 0%, #faf8ff 60%, #f5f0ff 100%);
+}
+
+/* Sidebar — white with subtle indigo right border */
+[data-theme="light"] .sidebar {
+    background: #ffffff;
+    border-right-color: rgba(79,53,224,0.12);
+    box-shadow: 2px 0 20px rgba(79,53,224,0.06);
+}
+
+/* Console badge in indigo tint */
+[data-theme="light"] .sb-console {
+    border-color: rgba(79,53,224,0.28);
+    background: rgba(79,53,224,0.06);
+    color: #4f35e0;
+}
+
+/* Section number labels get indigo */
+[data-theme="light"] .section-label {
+    color: rgba(79,53,224,0.35);
+}
+
+/* Hero binary strip */
+[data-theme="light"] .hero-binary {
+    background: var(--binary-bg);
+}
+
+/* Project terminal windows — dark indigo bg, not pure black */
+[data-theme="light"] .proj-term {
+    background: #0f0a22;
+    border-color: rgba(79,53,224,0.20);
+}
+[data-theme="light"] .proj-term-bar {
+    background: rgba(79,53,224,0.12);
+    border-bottom-color: rgba(79,53,224,0.18);
+}
+
+/* Publication cards */
+[data-theme="light"] .pub-card {
+    background: #fefcff;
+    border-color: rgba(20,13,46,0.08);
+}
+[data-theme="light"] .pub-card:hover {
+    border-color: rgba(79,53,224,0.25);
+    box-shadow: 0 4px 20px rgba(79,53,224,0.09);
+}
+
+/* Research chips */
+[data-theme="light"] .research-chip {
+    background: #fefcff;
+    border-color: rgba(79,53,224,0.14);
+}
+[data-theme="light"] .research-chip:hover {
+    border-color: rgba(79,53,224,0.35);
+    background: rgba(79,53,224,0.06);
+}
+
+/* Contact cards */
+[data-theme="light"] .contact-card {
+    background: #fefcff;
+    border-color: rgba(79,53,224,0.12);
+}
+[data-theme="light"] .contact-card:hover {
+    border-color: rgba(79,53,224,0.30);
+    box-shadow: 0 6px 24px rgba(79,53,224,0.10);
+}
+
+/* Focus bars */
+[data-theme="light"] .focus-track {
+    background: rgba(79,53,224,0.08);
+}
+
+/* About stats */
+[data-theme="light"] .stat-block {
+    border-color: rgba(79,53,224,0.14);
+}
+
+/* Footer */
+[data-theme="light"] .footer {
+    border-top-color: rgba(79,53,224,0.12);
+    background: #fefdf8;
 }
