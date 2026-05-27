@@ -296,6 +296,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ══════════════════════════════════════════
+     3D Tilt + Mouse Glow (project cards)
+     ══════════════════════════════════════════ */
+
+  function initTilt() {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        if (!card.classList.contains('card-visible')) return;
+
+        const r   = card.getBoundingClientRect();
+        const x   = e.clientX - r.left;
+        const y   = e.clientY - r.top;
+        const cx  = r.width  / 2;
+        const cy  = r.height / 2;
+        const rotX = -((y - cy) / cy) * 9;
+        const rotY =  ((x - cx) / cx) * 9;
+
+        card.style.setProperty('--mx', x + 'px');
+        card.style.setProperty('--my', y + 'px');
+        card.style.transform =
+          `perspective(750px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.015)`;
+        card.style.boxShadow =
+          `0 24px 56px rgba(0,0,0,0.55), 0 0 40px rgba(94,170,162,0.07)`;
+        card.style.zIndex = '2';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform   = '';
+        card.style.boxShadow   = '';
+        card.style.zIndex      = '';
+      });
+    });
+  }
+
+  initTilt();
+
+
+  /* ══════════════════════════════════════════
      Smooth scroll fallback
      ══════════════════════════════════════════ */
 
