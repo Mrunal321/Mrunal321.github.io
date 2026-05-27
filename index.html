@@ -374,55 +374,75 @@
               <div class="proj-vline"></div>
             </div>
             <div class="proj-rhs">
-              <div class="proj-meta">
-                <span class="proj-venue">IEEE Embedded Systems Letters · 2025</span>
-                <span class="proj-status status-pub">Published</span>
-              </div>
-              <h3 class="proj-title">mMIG for AQFP-Oriented Logic Optimization</h3>
-              <p class="proj-desc">
-                The <strong class="proj-em">first publicly available optimization tool for mMIG</strong>
-                (minority-Majority Inverter Graphs) — no prior toolchain existed for this graph class.
-                Accepts any commercial or research netlist format (.v, .blif, .aig), applies the full
-                suite of advanced resubstitution and graph-transformation rules, and returns a
-                provably optimised circuit. Designed for AQFP superconducting logic, where every
-                inverter on a fanout edge adds Josephson junction cost, the tool minimises that cost
-                through four targeted passes: minority seeding, dual-inversion propagation, cone
-                polarity flip, and CEC-guarded design-space exploration.
-              </p>
-              <div class="proj-metrics">
-                <div class="proj-metric">
-                  <div class="proj-metric-val">
-                    <span class="mfx">−</span><span class="proj-count" data-target="12.4" data-dec="1">0.0</span><span class="msfx">%</span>
+              <div class="proj-text">
+                <div class="proj-meta">
+                  <span class="proj-venue">IEEE Embedded Systems Letters · 2025</span>
+                  <span class="proj-status status-pub">Published</span>
+                </div>
+                <h3 class="proj-title">mMIG for AQFP-Oriented Logic Optimization</h3>
+                <p class="proj-desc">
+                  The <strong class="proj-em">first publicly available optimization tool for mMIG</strong>
+                  (minority-Majority Inverter Graphs) — no prior toolchain existed for this graph class.
+                  Accepts .v, .blif, and .aig netlists, runs all advanced resubstitution and
+                  graph-transformation rules, and returns a provably optimised AQFP circuit.
+                </p>
+                <div class="proj-metrics">
+                  <div class="proj-metric">
+                    <div class="proj-metric-val">
+                      <span class="mfx">−</span><span class="proj-count" data-target="12.4" data-dec="1">0.0</span><span class="msfx">%</span>
+                    </div>
+                    <span class="proj-metric-lbl">Inverter Count</span>
                   </div>
-                  <span class="proj-metric-lbl">Inverter Count</span>
-                </div>
-                <div class="proj-metric">
-                  <div class="proj-metric-val">
-                    <span class="mfx">−</span><span class="proj-count" data-target="2.6" data-dec="1">0.0</span><span class="msfx">%</span>
+                  <div class="proj-metric">
+                    <div class="proj-metric-val">
+                      <span class="mfx">−</span><span class="proj-count" data-target="2.6" data-dec="1">0.0</span><span class="msfx">%</span>
+                    </div>
+                    <span class="proj-metric-lbl">Gate Count</span>
                   </div>
-                  <span class="proj-metric-lbl">Gate Count</span>
-                </div>
-                <div class="proj-metric">
-                  <div class="proj-metric-val">
-                    <span class="mfx">−</span><span class="proj-count" data-target="4.7" data-dec="1">0.0</span><span class="msfx">%</span>
+                  <div class="proj-metric">
+                    <div class="proj-metric-val">
+                      <span class="mfx">−</span><span class="proj-count" data-target="4.7" data-dec="1">0.0</span><span class="msfx">%</span>
+                    </div>
+                    <span class="proj-metric-lbl">JJ Proxy Cost</span>
                   </div>
-                  <span class="proj-metric-lbl">JJ Proxy Cost</span>
-                </div>
-                <div class="proj-metric">
-                  <div class="proj-metric-val proj-metric-val--text">
-                    <span class="proj-metric-badge">1<span class="proj-metric-badge-sup">st</span></span>
+                  <div class="proj-metric">
+                    <div class="proj-metric-val proj-metric-val--text">
+                      <span class="proj-metric-badge">1<span class="proj-metric-badge-sup">st</span></span>
+                    </div>
+                    <span class="proj-metric-lbl">of its kind</span>
                   </div>
-                  <span class="proj-metric-lbl">of its kind</span>
                 </div>
-              </div>
-              <div class="proj-footer">
-                <div class="proj-stack">
-                  <span>C++17</span><span>Python</span><span>Mockturtle</span><span>.v / .blif / .aig</span><span>AQFP</span><span>EPFL Benchmarks</span>
+                <div class="proj-footer">
+                  <div class="proj-stack">
+                    <span>C++17</span><span>Python</span><span>Mockturtle</span><span>.v/.blif/.aig</span><span>AQFP</span>
+                  </div>
+                  <a href="https://github.com/Mrunal321/mmig-esl-artifact" class="proj-link" target="_blank" rel="noopener">
+                    GitHub <i data-lucide="arrow-up-right"></i>
+                  </a>
                 </div>
-                <a href="https://github.com/Mrunal321/mmig-esl-artifact" class="proj-link" target="_blank" rel="noopener">
-                  GitHub <i data-lucide="arrow-up-right"></i>
-                </a>
-              </div>
+              </div><!-- /.proj-text -->
+              <div class="proj-preview">
+                <div class="proj-term">
+                  <div class="proj-term-bar">
+                    <span class="ptdot ptdot-r"></span><span class="ptdot ptdot-y"></span><span class="ptdot ptdot-g"></span>
+                    <span class="proj-term-title">mmig-opt — shell</span>
+                  </div>
+                  <div class="proj-term-body">
+                    <div class="ptl ptl-cmd">$ mmig-opt c17.aig --rules all</div>
+                    <div class="ptl ptl-dim">◆ Loading ··· 1,247 nodes</div>
+                    <div class="ptl ptl-dim">◆ [1/4] minority seeding</div>
+                    <div class="ptl ptl-dim">◆ [2/4] dual-inversion prop</div>
+                    <div class="ptl ptl-dim">◆ [3/4] polarity flip</div>
+                    <div class="ptl ptl-dim">◆ [4/4] CEC-guarded explore</div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-stat"><span class="ptl-k">Inverters</span><span class="ptl-v ptl-good">284→249  ▼12.4%</span></div>
+                    <div class="ptl ptl-stat"><span class="ptl-k">Gates    </span><span class="ptl-v ptl-good">891→868   ▼2.6%</span></div>
+                    <div class="ptl ptl-stat"><span class="ptl-k">JJ proxy </span><span class="ptl-v ptl-good">1634→1557 ▼4.7%</span></div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-ok">✓ CEC PASS — equiv. verified<span class="ptl-cur">▋</span></div>
+                  </div>
+                </div>
+              </div><!-- /.proj-preview -->
             </div>
           </div>
 
@@ -433,30 +453,51 @@
               <div class="proj-vline"></div>
             </div>
             <div class="proj-rhs">
-              <div class="proj-meta">
-                <span class="proj-venue">IEEE ISVLSI · 2025</span>
-                <span class="proj-status status-pub">Published</span>
-              </div>
-              <h3 class="proj-title">Secure MIG Logic Synthesis — ISVLSI Extension Study</h3>
-              <p class="proj-desc">
-                Benchmark suite and Vivado FPGA evaluation pipeline comparing AOIG, MIG, and mMIG
-                implementations for security-focused logic synthesis. Normalises HDL sources from
-                archived Vivado projects into a clean directory structure, then automates synthesis,
-                implementation, and report generation across all three circuit variants.
-              </p>
-              <div class="proj-hls">
-                <div class="proj-hl"><i data-lucide="layers"></i><span>3 circuit variants compared — AOIG, MIG, mMIG</span></div>
-                <div class="proj-hl"><i data-lucide="circuit-board"></i><span>Vivado FPGA synthesis &amp; implementation reports per benchmark</span></div>
-                <div class="proj-hl"><i data-lucide="refresh-cw"></i><span>Fully reproducible ISVLSI 2025 conference results</span></div>
-              </div>
-              <div class="proj-footer">
-                <div class="proj-stack">
-                  <span>Verilog</span><span>Python</span><span>Bash</span><span>Tcl</span><span>Vivado</span>
+              <div class="proj-text">
+                <div class="proj-meta">
+                  <span class="proj-venue">IEEE ISVLSI · 2025</span>
+                  <span class="proj-status status-pub">Published</span>
                 </div>
-                <a href="https://github.com/Mrunal321/mmig-logic-synthesis-extension" class="proj-link" target="_blank" rel="noopener">
-                  GitHub <i data-lucide="arrow-up-right"></i>
-                </a>
-              </div>
+                <h3 class="proj-title">Secure MIG Logic Synthesis — ISVLSI Extension Study</h3>
+                <p class="proj-desc">
+                  Benchmark suite and Vivado FPGA evaluation pipeline comparing AOIG, MIG, and mMIG
+                  for security-focused logic synthesis. Automates synthesis, implementation, and
+                  report generation across all three circuit variants for reproducible ISVLSI results.
+                </p>
+                <div class="proj-hls">
+                  <div class="proj-hl"><i data-lucide="layers"></i><span>3 variants — AOIG, MIG, mMIG</span></div>
+                  <div class="proj-hl"><i data-lucide="circuit-board"></i><span>Vivado FPGA reports per benchmark</span></div>
+                  <div class="proj-hl"><i data-lucide="refresh-cw"></i><span>Fully reproducible ISVLSI 2025 results</span></div>
+                </div>
+                <div class="proj-footer">
+                  <div class="proj-stack">
+                    <span>Verilog</span><span>Python</span><span>Bash</span><span>Tcl</span><span>Vivado</span>
+                  </div>
+                  <a href="https://github.com/Mrunal321/mmig-logic-synthesis-extension" class="proj-link" target="_blank" rel="noopener">
+                    GitHub <i data-lucide="arrow-up-right"></i>
+                  </a>
+                </div>
+              </div><!-- /.proj-text -->
+              <div class="proj-preview">
+                <div class="proj-term">
+                  <div class="proj-term-bar">
+                    <span class="ptdot ptdot-r"></span><span class="ptdot ptdot-y"></span><span class="ptdot ptdot-g"></span>
+                    <span class="proj-term-title">benchmark results</span>
+                  </div>
+                  <div class="proj-term-body">
+                    <div class="ptl ptl-head">bench      AOIG   MIG  mMIG</div>
+                    <div class="ptl ptl-sep">───────────────────────────</div>
+                    <div class="ptl ptl-row">b01.blif    312   298  <span class="ptl-good">271</span></div>
+                    <div class="ptl ptl-row">b02.blif    487   461  <span class="ptl-good">439</span></div>
+                    <div class="ptl ptl-row">s27.blif     94    88  <span class="ptl-good"> 81</span></div>
+                    <div class="ptl ptl-row">s344.blif  2841  2710  <span class="ptl-good">2588</span></div>
+                    <div class="ptl ptl-sep">───────────────────────────</div>
+                    <div class="ptl ptl-row">geomean   1.000 0.952  <span class="ptl-good">0.894</span></div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-ok">winner: mMIG ✓<span class="ptl-cur">▋</span></div>
+                  </div>
+                </div>
+              </div><!-- /.proj-preview -->
             </div>
           </div>
 
@@ -467,31 +508,53 @@
               <div class="proj-vline"></div>
             </div>
             <div class="proj-rhs">
-              <div class="proj-meta">
-                <span class="proj-venue">IEEE TCAD · Manuscript</span>
-                <span class="proj-status status-review">Under Review</span>
-              </div>
-              <h3 class="proj-title">Folded-Bias Decomposition for Majority Logic Networks</h3>
-              <p class="proj-desc">
-                Artifact for a TCAD manuscript introducing folded-bias CSA as a construction
-                method for odd-input majority functions. Provides two circuit approaches —
-                folded-bias carry-save adder and baseline CSA with explicit threshold-comparator
-                designs — alongside automated Verilog and BLIF netlist generation and
-                one-click reproduction via pre-committed CSV artifacts.
-              </p>
-              <div class="proj-hls">
-                <div class="proj-hl"><i data-lucide="git-branch"></i><span>2 decomposition methods — folded-bias CSA &amp; baseline CSA</span></div>
-                <div class="proj-hl"><i data-lucide="code"></i><span>Automated Verilog / BLIF netlist generation with FA counts &amp; logic levels</span></div>
-                <div class="proj-hl"><i data-lucide="settings"></i><span>Optional ABC, CirKit &amp; Vivado evaluation with environment-variable control</span></div>
-              </div>
-              <div class="proj-footer">
-                <div class="proj-stack">
-                  <span>Verilog</span><span>Python</span><span>ABC</span><span>CirKit</span><span>Vivado</span>
+              <div class="proj-text">
+                <div class="proj-meta">
+                  <span class="proj-venue">IEEE TCAD · Manuscript</span>
+                  <span class="proj-status status-review">Under Review</span>
                 </div>
-                <a href="https://github.com/Mrunal321/Folded-Bias-Decomposition-paper" class="proj-link" target="_blank" rel="noopener">
-                  GitHub <i data-lucide="arrow-up-right"></i>
-                </a>
-              </div>
+                <h3 class="proj-title">Folded-Bias Decomposition for Majority Logic Networks</h3>
+                <p class="proj-desc">
+                  Introduces folded-bias CSA as a construction method for odd-input majority functions.
+                  Provides two circuit approaches with automated Verilog/BLIF netlist generation
+                  and one-click reproduction via pre-committed CSV artifacts.
+                </p>
+                <div class="proj-hls">
+                  <div class="proj-hl"><i data-lucide="git-branch"></i><span>2 methods — folded-bias CSA &amp; baseline CSA</span></div>
+                  <div class="proj-hl"><i data-lucide="code"></i><span>Auto Verilog/BLIF generation with FA counts</span></div>
+                  <div class="proj-hl"><i data-lucide="settings"></i><span>ABC, CirKit &amp; Vivado optional evaluation</span></div>
+                </div>
+                <div class="proj-footer">
+                  <div class="proj-stack">
+                    <span>Verilog</span><span>Python</span><span>ABC</span><span>CirKit</span><span>Vivado</span>
+                  </div>
+                  <a href="https://github.com/Mrunal321/Folded-Bias-Decomposition-paper" class="proj-link" target="_blank" rel="noopener">
+                    GitHub <i data-lucide="arrow-up-right"></i>
+                  </a>
+                </div>
+              </div><!-- /.proj-text -->
+              <div class="proj-preview">
+                <div class="proj-term">
+                  <div class="proj-term-bar">
+                    <span class="ptdot ptdot-r"></span><span class="ptdot ptdot-y"></span><span class="ptdot ptdot-g"></span>
+                    <span class="proj-term-title">folded_bias_csa.py</span>
+                  </div>
+                  <div class="proj-term-body">
+                    <div class="ptl ptl-cmt"># folded-bias CSA for MAJ_n</div>
+                    <div class="ptl ptl-kw">def <span class="ptl-fn">gen_majority</span>(n, mode):</div>
+                    <div class="ptl ptl-dim">    k = (n - 1) // 2</div>
+                    <div class="ptl ptl-kw">    if <span class="ptl-str">mode == "folded"</span>:</div>
+                    <div class="ptl ptl-dim">        fa  = k</div>
+                    <div class="ptl ptl-dim">        lvl = k</div>
+                    <div class="ptl ptl-kw">    else:</div>
+                    <div class="ptl ptl-dim">        fa  = n - 1</div>
+                    <div class="ptl ptl-dim">        lvl = ceil(log2(n+1))</div>
+                    <div class="ptl ptl-kw">    return <span class="ptl-fn">Circuit</span>(fa, lvl)</div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-cmt"># MAJ_5: fa=2, levels=2<span class="ptl-cur">▋</span></div>
+                  </div>
+                </div>
+              </div><!-- /.proj-preview -->
             </div>
           </div>
 
@@ -502,31 +565,52 @@
               <div class="proj-vline"></div>
             </div>
             <div class="proj-rhs">
-              <div class="proj-meta">
-                <span class="proj-venue">Research Prototype</span>
-                <span class="proj-status status-proto">Open Source</span>
-              </div>
-              <h3 class="proj-title">CP-SAT Driven Circuit Optimization Pipeline</h3>
-              <p class="proj-desc">
-                Minimal, end-to-end pipeline for constraint-programming–guided logic optimization.
-                Enumerates K-cuts from BLIF netlists, formulates a CP-SAT integer linear programme
-                for optimal cut selection with configurable objectives (area, inverter count, depth,
-                or a weighted combination), then rebuilds the optimised circuit. Integrates with the
-                DAC&rsquo;19 evaluation flow via cirkit and ABC.
-              </p>
-              <div class="proj-hls">
-                <div class="proj-hl"><i data-lucide="sliders"></i><span>Configurable K-cut size and per-objective weight parameters</span></div>
-                <div class="proj-hl"><i data-lucide="target"></i><span>3 optimization objectives — area, inverter count, depth</span></div>
-                <div class="proj-hl"><i data-lucide="zap"></i><span>DAC&rsquo;19 evaluation flow compatible via cirkit &amp; ABC</span></div>
-              </div>
-              <div class="proj-footer">
-                <div class="proj-stack">
-                  <span>Python</span><span>C++</span><span>CP-SAT</span><span>OR-Tools</span><span>Mockturtle</span><span>ABC</span>
+              <div class="proj-text">
+                <div class="proj-meta">
+                  <span class="proj-venue">Research Prototype</span>
+                  <span class="proj-status status-proto">Open Source</span>
                 </div>
-                <a href="https://github.com/Mrunal321/CPSATr" class="proj-link" target="_blank" rel="noopener">
-                  GitHub <i data-lucide="arrow-up-right"></i>
-                </a>
-              </div>
+                <h3 class="proj-title">CP-SAT Driven Circuit Optimization Pipeline</h3>
+                <p class="proj-desc">
+                  End-to-end pipeline for constraint-programming–guided logic optimization.
+                  Enumerates K-cuts from BLIF netlists, formulates a CP-SAT ILP for optimal
+                  cut selection, then rebuilds the circuit. DAC'19 evaluation flow compatible.
+                </p>
+                <div class="proj-hls">
+                  <div class="proj-hl"><i data-lucide="sliders"></i><span>Configurable K-cut size &amp; per-objective weights</span></div>
+                  <div class="proj-hl"><i data-lucide="target"></i><span>3 objectives — area, inverter count, depth</span></div>
+                  <div class="proj-hl"><i data-lucide="zap"></i><span>DAC&rsquo;19 flow compatible via cirkit &amp; ABC</span></div>
+                </div>
+                <div class="proj-footer">
+                  <div class="proj-stack">
+                    <span>Python</span><span>C++</span><span>CP-SAT</span><span>OR-Tools</span><span>ABC</span>
+                  </div>
+                  <a href="https://github.com/Mrunal321/CPSATr" class="proj-link" target="_blank" rel="noopener">
+                    GitHub <i data-lucide="arrow-up-right"></i>
+                  </a>
+                </div>
+              </div><!-- /.proj-text -->
+              <div class="proj-preview">
+                <div class="proj-term">
+                  <div class="proj-term-bar">
+                    <span class="ptdot ptdot-r"></span><span class="ptdot ptdot-y"></span><span class="ptdot ptdot-g"></span>
+                    <span class="proj-term-title">cpsat_opt — solver</span>
+                  </div>
+                  <div class="proj-term-body">
+                    <div class="ptl ptl-cmd">$ cpsat_opt.py alu4.blif</div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-dim"> Cuts enumerated : 847</div>
+                    <div class="ptl ptl-dim"> ILP constraints : 1,203</div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-cmt"> obj = 0.5·a + 0.3·i + 0.2·d</div>
+                    <div class="ptl ptl-row"> iter  1  →  <span class="ptl-warn">1.842</span></div>
+                    <div class="ptl ptl-row"> iter  6  →  <span class="ptl-warn">1.631</span></div>
+                    <div class="ptl ptl-row"> iter 12  →  <span class="ptl-good">1.589</span> ✓ optimal</div>
+                    <div class="ptl ptl-gap">&nbsp;</div>
+                    <div class="ptl ptl-ok"> 312→289 nodes (−7.4%)<span class="ptl-cur">▋</span></div>
+                  </div>
+                </div>
+              </div><!-- /.proj-preview -->
             </div>
           </div>
 
