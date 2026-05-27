@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,15 @@
   <meta name="description" content="Academic portfolio of Mrunal Shende, PhD Candidate in Computer Science and Engineering at IIT Indore. Research in logic synthesis, EDA algorithms, and solver-guided optimization." />
   <meta name="keywords" content="Mrunal Shende, PhD, IIT Indore, Logic Synthesis, EDA, Computer Science, Research" />
   <meta name="author" content="Mrunal Shende" />
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefer = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || prefer);
+    })();
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,9 +35,11 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">M<span class="nav-logo-dot">.</span>S</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="nav-console" id="navConsole" aria-hidden="true">
+        <span class="console-text" id="consoleText">INIT</span><span class="console-cursor">_</span>
+      </div>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
@@ -38,6 +49,16 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark theme">
+          <i data-lucide="sun"  class="theme-icon theme-icon-sun"></i>
+          <i data-lucide="moon" class="theme-icon theme-icon-moon"></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -45,10 +66,11 @@
   <!-- Hero Section                                -->
   <!-- ═══════════════════════════════════════════ -->
   <section class="hero" id="hero">
+    <div class="hero-binary" id="heroBinary" aria-hidden="true"></div>
     <div class="container hero-content">
       <div class="hero-text">
-        <p class="hero-label fade-in">PhD Candidate · Computer Science &amp; Engineering</p>
-        <h1 class="hero-name fade-in" style="animation-delay: 0.1s">Mrunal Shende</h1>
+        <p class="hero-label fade-in" data-scramble style="animation-delay: 0s">PhD Candidate · Computer Science &amp; Engineering</p>
+        <h1 class="hero-name fade-in" data-scramble style="animation-delay: 0.05s">Mrunal Shende</h1>
         <p class="hero-affiliation fade-in" style="animation-delay: 0.2s">Indian Institute of Technology Indore</p>
         <p class="hero-intro fade-in" style="animation-delay: 0.3s">
           Researching logic synthesis, EDA algorithms, and solver-guided optimization
@@ -63,8 +85,10 @@
         </div>
       </div>
     </div>
-    <div class="hero-decoration"></div>
   </section>
+
+  <!-- Binary separator -->
+  <div class="binary-sep" aria-hidden="true" id="binSep1"></div>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- About Section                               -->
@@ -202,6 +226,9 @@
     </div>
   </section>
 
+  <!-- Binary separator -->
+  <div class="binary-sep" aria-hidden="true" id="binSep2"></div>
+
   <!-- ═══════════════════════════════════════════ -->
   <!-- Selected Projects                           -->
   <!-- ═══════════════════════════════════════════ -->
@@ -210,76 +237,124 @@
       <div class="section-header reveal">
         <span class="section-label">04</span>
         <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+          Source code and artifacts available on
+          <a href="https://github.com/Mrunal321" class="inline-link" target="_blank" rel="noopener">GitHub</a>.
+        </p>
       </div>
       <div class="projects-grid reveal">
 
         <article class="project-card">
-          <div class="project-tag">Optimization</div>
-          <h3 class="project-title">Solver-Guided MIG Rewriting</h3>
+          <div class="project-header">
+            <div class="project-tag">Logic Synthesis</div>
+            <span class="project-hash">#mmig-001</span>
+          </div>
+          <h3 class="project-title">mMIG for AQFP Logic Optimization</h3>
           <p class="project-desc">
-            Developed an exact synthesis framework using SAT/SMT solvers for optimal MIG rewriting.
-            The approach enumerates structurally minimal representations of Boolean functions within
-            bounded windows, achieving measurable area and depth improvements on EPFL benchmarks.
+            Artifact for "minority-Majority Inverter Graphs for Inverter-Aware AQFP-Oriented Logic
+            Optimization." Includes C++ implementation built on Mockturtle, pre-computed results,
+            and reproduction scripts for Table 1 benchmarks.
           </p>
-          <div class="project-tech">
-            <span>SAT/SMT</span>
-            <span>MIG</span>
-            <span>C++</span>
-            <span>ABC</span>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span>C++</span><span>Mockturtle</span><span>AQFP</span><span>MIG</span>
+            </div>
+            <a href="https://github.com/Mrunal321/mmig-esl-artifact" class="project-link" target="_blank" rel="noopener" aria-label="View on GitHub">
+              <i data-lucide="github"></i>
+            </a>
           </div>
         </article>
 
         <article class="project-card">
-          <div class="project-tag">Security</div>
-          <h3 class="project-title">Secure Logic Synthesis with mMIG Transformations</h3>
-          <p class="project-desc">
-            Explored majority-based graph transformations for implementing logic locking and
-            structural obfuscation. Designed synthesis flows using modified MIG (mMIG) representations
-            to enhance resilience against oracle-guided attacks on combinational circuits.
-          </p>
-          <div class="project-tech">
-            <span>mMIG</span>
-            <span>Logic Locking</span>
-            <span>Python</span>
-            <span>Verilog</span>
+          <div class="project-header">
+            <div class="project-tag">Decomposition</div>
+            <span class="project-hash">#fold-002</span>
           </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-tag">Decomposition</div>
           <h3 class="project-title">Folded-Bias Majority Decomposition</h3>
           <p class="project-desc">
-            Proposed a decomposition strategy based on folded-bias structures in majority logic,
-            enabling compact representations of functions with biased onset/offset properties.
-            Evaluated against standard decomposition methods for depth and node count.
+            Simulation data and HDL for n-input linear majority decomposition using folded-bias
+            structures. Evaluated against standard decomposition methods for depth and node count
+            on EPFL benchmark circuits.
           </p>
-          <div class="project-tech">
-            <span>Majority Logic</span>
-            <span>Decomposition</span>
-            <span>Benchmarking</span>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span>Verilog</span><span>Majority Logic</span><span>Python</span>
+            </div>
+            <a href="https://github.com/Mrunal321/Folded_Bias-Decomposition" class="project-link" target="_blank" rel="noopener" aria-label="View on GitHub">
+              <i data-lucide="github"></i>
+            </a>
           </div>
         </article>
 
         <article class="project-card">
-          <div class="project-tag">Tooling</div>
-          <h3 class="project-title">Automated EDA Evaluation Pipeline</h3>
+          <div class="project-header">
+            <div class="project-tag">Circuit Synthesis</div>
+            <span class="project-hash">#mono-003</span>
+          </div>
+          <h3 class="project-title">Cancellation Monoid Majority Circuits</h3>
           <p class="project-desc">
-            Built an end-to-end automation framework for running logic synthesis experiments—
-            covering benchmark ingestion, flow configuration, synthesis execution (Vivado/Yosys),
-            result extraction, and comparative analysis. Designed for reproducibility across
-            different optimization configurations.
+            Exact and approximate synthesis of odd-input majority circuits using cancellation
+            monoid algebraic structures. Implemented and evaluated in the Mockturtle framework
+            across standard benchmark suites.
           </p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Vivado</span>
-            <span>Yosys</span>
-            <span>Bash</span>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span>Verilog</span><span>Mockturtle</span><span>C++</span><span>SAT</span>
+            </div>
+            <a href="https://github.com/Mrunal321/cancellation-monoid-majority-circuits" class="project-link" target="_blank" rel="noopener" aria-label="View on GitHub">
+              <i data-lucide="github"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag">EDA Tooling</div>
+            <span class="project-hash">#flow-004</span>
+          </div>
+          <h3 class="project-title">mMIG Benchmark &amp; FPGA Flow</h3>
+          <p class="project-desc">
+            End-to-end benchmark generation and FPGA evaluation pipeline for mMIG synthesis
+            experiments. Automates AOIG, MIG, and mMIG comparison with Vivado-based evaluation
+            flows for reproducible results.
+          </p>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span>Python</span><span>Vivado</span><span>Yosys</span><span>Bash</span>
+            </div>
+            <a href="https://github.com/Mrunal321/mMIG-benchmark-flow" class="project-link" target="_blank" rel="noopener" aria-label="View on GitHub">
+              <i data-lucide="github"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag">Security</div>
+            <span class="project-hash">#ext-005</span>
+          </div>
+          <h3 class="project-title">mMIG Logic Synthesis Extension (ISVLSI)</h3>
+          <p class="project-desc">
+            AOIG, MIG, and mMIG benchmark suite with Vivado-based FPGA evaluation for the ISVLSI
+            extension study. Targets majority-based secure logic synthesis and resilience against
+            oracle-guided structural attacks.
+          </p>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span>Verilog</span><span>Vivado</span><span>FPGA</span><span>ISVLSI</span>
+            </div>
+            <a href="https://github.com/Mrunal321/mmig-logic-synthesis-extension" class="project-link" target="_blank" rel="noopener" aria-label="View on GitHub">
+              <i data-lucide="github"></i>
+            </a>
           </div>
         </article>
 
       </div>
     </div>
   </section>
+
+  <!-- Binary separator -->
+  <div class="binary-sep" aria-hidden="true" id="binSep3"></div>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- Publications                                -->
@@ -290,8 +365,8 @@
         <span class="section-label">05</span>
         <h2 class="section-title">Publications</h2>
         <p class="section-subtitle">
-          For a complete list, visit my
-          <a href="#" class="inline-link" target="_blank" rel="noopener">Google Scholar</a> profile.
+          Full list on
+          <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="inline-link" target="_blank" rel="noopener">Google Scholar</a>.
         </p>
       </div>
       <div class="publications-list reveal">
@@ -299,12 +374,16 @@
         <div class="pub-card">
           <div class="pub-year">2025</div>
           <div class="pub-body">
-            <h3 class="pub-title">Solver-Guided Optimization of Majority-Inverter Graphs</h3>
+            <h3 class="pub-title">minority-Majority Inverter Graphs for Inverter-Aware AQFP-Oriented Logic Optimization</h3>
             <p class="pub-authors">M. Shende, et al.</p>
-            <p class="pub-venue">Journal / Conference Name</p>
+            <p class="pub-venue">IEEE Embedded Systems Letters</p>
             <div class="pub-links">
-              <a href="#" class="pub-link"><i data-lucide="file-text" class="pub-link-icon"></i>Paper</a>
-              <a href="#" class="pub-link"><i data-lucide="external-link" class="pub-link-icon"></i>DOI</a>
+              <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="file-text"></i>Scholar
+              </a>
+              <a href="https://github.com/Mrunal321/mmig-esl-artifact" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="github"></i>Artifact
+              </a>
             </div>
           </div>
         </div>
@@ -314,10 +393,31 @@
           <div class="pub-body">
             <h3 class="pub-title">Secure Logic Synthesis Using Modified Majority-Inverter Graphs</h3>
             <p class="pub-authors">M. Shende, et al.</p>
-            <p class="pub-venue">Journal / Conference Name</p>
+            <p class="pub-venue">IEEE ISVLSI 2024 (Extension)</p>
             <div class="pub-links">
-              <a href="#" class="pub-link"><i data-lucide="file-text" class="pub-link-icon"></i>Paper</a>
-              <a href="#" class="pub-link"><i data-lucide="external-link" class="pub-link-icon"></i>DOI</a>
+              <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="file-text"></i>Scholar
+              </a>
+              <a href="https://github.com/Mrunal321/mmig-logic-synthesis-extension" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="github"></i>Artifact
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-year">2024</div>
+          <div class="pub-body">
+            <h3 class="pub-title">Exact and Approximate Synthesis of Odd-Input Majority Circuits via Cancellation Monoids</h3>
+            <p class="pub-authors">M. Shende, et al.</p>
+            <p class="pub-venue">IEEE Conference / Journal</p>
+            <div class="pub-links">
+              <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="file-text"></i>Scholar
+              </a>
+              <a href="https://github.com/Mrunal321/cancellation-monoid-majority-circuits" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="github"></i>Code
+              </a>
             </div>
           </div>
         </div>
@@ -327,10 +427,14 @@
           <div class="pub-body">
             <h3 class="pub-title">Folded-Bias Decomposition for Majority-Based Logic Networks</h3>
             <p class="pub-authors">M. Shende, et al.</p>
-            <p class="pub-venue">Journal / Conference Name</p>
+            <p class="pub-venue">IEEE Conference / Journal</p>
             <div class="pub-links">
-              <a href="#" class="pub-link"><i data-lucide="file-text" class="pub-link-icon"></i>Paper</a>
-              <a href="#" class="pub-link"><i data-lucide="external-link" class="pub-link-icon"></i>DOI</a>
+              <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="file-text"></i>Scholar
+              </a>
+              <a href="https://github.com/Mrunal321/Folded-Bias-Decomposition-paper" class="pub-link" target="_blank" rel="noopener">
+                <i data-lucide="github"></i>Code
+              </a>
             </div>
           </div>
         </div>
@@ -410,35 +514,35 @@
       <div class="section-header reveal">
         <span class="section-label">07</span>
         <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">Feel free to reach out for research collaborations, discussions, or opportunities.</p>
+        <p class="section-subtitle">Open to research collaborations, discussions, and opportunities.</p>
       </div>
       <div class="contact-grid reveal">
-        <a href="mailto:mrunal.shende@iiti.ac.in" class="contact-card" id="contact-email">
+        <a href="mailto:mrunal.shende@iiti.ac.in" class="contact-card">
           <i data-lucide="mail" class="contact-icon"></i>
           <div>
             <h4 class="contact-label">Email</h4>
             <span class="contact-value">mrunal.shende@iiti.ac.in</span>
           </div>
         </a>
-        <a href="#" class="contact-card" target="_blank" rel="noopener" id="contact-linkedin">
+        <a href="https://www.linkedin.com/in/mrunal-shende-517611164/" class="contact-card" target="_blank" rel="noopener">
           <i data-lucide="linkedin" class="contact-icon"></i>
           <div>
             <h4 class="contact-label">LinkedIn</h4>
-            <span class="contact-value">linkedin.com/in/mrunalshende</span>
+            <span class="contact-value">mrunal-shende-517611164</span>
           </div>
         </a>
-        <a href="#" class="contact-card" target="_blank" rel="noopener" id="contact-scholar">
+        <a href="https://scholar.google.com/citations?user=qUTnmiMAAAAJ&hl=en" class="contact-card" target="_blank" rel="noopener">
           <i data-lucide="graduation-cap" class="contact-icon"></i>
           <div>
             <h4 class="contact-label">Google Scholar</h4>
-            <span class="contact-value">View Profile</span>
+            <span class="contact-value">View Publication Profile</span>
           </div>
         </a>
-        <a href="https://github.com/mrunalshende" class="contact-card" target="_blank" rel="noopener" id="contact-github">
+        <a href="https://github.com/Mrunal321" class="contact-card" target="_blank" rel="noopener">
           <i data-lucide="github" class="contact-icon"></i>
           <div>
             <h4 class="contact-label">GitHub</h4>
-            <span class="contact-value">github.com/mrunalshende</span>
+            <span class="contact-value">github.com/Mrunal321</span>
           </div>
         </a>
       </div>
@@ -450,7 +554,13 @@
   <!-- ═══════════════════════════════════════════ -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>&copy; 2026 Mrunal Shende. Built with care.</p>
+      <p>
+        &copy; 2026 Mrunal Shende
+        <span class="footer-sep">//</span>
+        IIT Indore, CSE
+        <span class="footer-sep">//</span>
+        Built with care
+      </p>
     </div>
   </footer>
 
