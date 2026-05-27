@@ -1743,10 +1743,14 @@ a:hover { color: var(--accent-soft); }
 }
 .proj-visible .ptl-cur { opacity: 1; }
 
-/* Hide preview on narrow screens */
+/* Stack preview below text on narrow screens */
 @media (max-width: 1060px) {
-    .proj-rhs      { grid-template-columns: 1fr; }
-    .proj-preview  { display: none; }
+    .proj-rhs     { grid-template-columns: 1fr; }
+    .proj-preview { position: static; }
+}
+
+@media (max-width: 480px) {
+    .proj-term    { font-size: 0.63rem; }
 }
 
 .proj-meta {
