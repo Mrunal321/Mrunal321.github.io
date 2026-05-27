@@ -1114,6 +1114,23 @@ a:hover { color: var(--accent-soft); }
 }
 
 
+/* About bio paragraph */
+.about-bio {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
+    border-left: 2px solid var(--accent-border);
+    background: var(--accent-bg);
+    border-radius: 0 8px 8px 0;
+}
+
+.about-bio p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+
 /* ═══════════════════════════════════════════
    Research Interests
    ═══════════════════════════════════════════ */

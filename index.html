@@ -131,8 +131,7 @@
             </div>
 
             <p class="hero-intro">
-              Logic synthesis, EDA algorithms, and solver-guided optimization
-              for hardware-efficient design.
+              I work on majority/minority-based logic representations, solver-guided optimization, and reproducible EDA flows for hardware-efficient digital design.
             </p>
 
             <div class="hero-kpis">
@@ -161,7 +160,7 @@
               <a href="#research"     class="btn btn-primary">View Research</a>
               <a href="#publications" class="btn btn-secondary">Publications</a>
               <a href="#contact"      class="btn btn-secondary">Contact</a>
-              <a href="mailto:phd2301101003@iiti.ac.in?subject=CV%20Request" class="btn btn-outline" id="resumeBtn">Resume / CV</a>
+              <a href="mailto:mrunalshende05@gmail.com?subject=CV%20Request" class="btn btn-outline" id="resumeBtn">Resume / CV</a>
             </div>
 
           </div><!-- /.hero-left -->
@@ -333,6 +332,10 @@
           </div><!-- /.about-right -->
         </div><!-- /.about-panels -->
 
+        <div class="about-bio reveal">
+          <p>My research centres on logic graph representations—particularly Majority Inverter Graphs (MIG) and their minority-extended variant (mMIG)—and their application to AQFP-oriented synthesis, technology mapping, and secure logic design. I combine formal equivalence checking, constraint-guided search, and benchmark-driven evaluation to build reproducible EDA flows that target both quality-of-results and correctness guarantees.</p>
+        </div>
+
       </div>
     </section>
 
@@ -490,8 +493,9 @@
           <span class="section-label">04</span>
           <h2 class="section-title js-letters">Selected Projects</h2>
           <p class="section-subtitle">
-            Artifacts and source code on
-            <a href="https://github.com/Mrunal321" class="inline-link" target="_blank" rel="noopener">GitHub</a>.
+            Research artifacts, scripts, generated netlists, and reproduction flows are available through the linked
+            <a href="https://github.com/Mrunal321" class="inline-link" target="_blank" rel="noopener">GitHub</a>
+            repositories.
           </p>
         </div>
 
@@ -507,14 +511,15 @@
               <div class="proj-text">
                 <div class="proj-meta">
                   <span class="proj-venue">IEEE Embedded Systems Letters · 2025</span>
-                  <span class="proj-status status-pub">Published</span>
+                  <span class="proj-status status-review">Under Review</span>
                 </div>
                 <h3 class="proj-title">mMIG for AQFP-Oriented Logic Optimization</h3>
                 <p class="proj-desc">
-                  The <strong class="proj-em">first publicly available optimization tool for mMIG</strong>
-                  (minority-Majority Inverter Graphs) — no prior toolchain existed for this graph class.
-                  Accepts .v, .blif, and .aig netlists, runs all advanced resubstitution and
-                  graph-transformation rules, and returns a provably optimised AQFP circuit.
+                  An open-source prototype for minority-Majority Inverter Graph (mMIG) optimization
+                  targeting inverter-aware AQFP-oriented cost proxies. The flow applies minority seeding,
+                  dual-inversion propagation, cone polarity flipping, and CEC-guarded design-space
+                  exploration, retaining only formally equivalent outputs. The reported AQFP metric is a
+                  pre-mapping proxy based on gate and complemented-edge counts.
                 </p>
                 <div class="proj-metrics">
                   <div class="proj-metric">
@@ -533,7 +538,7 @@
                     <div class="proj-metric-val">
                       <span class="mfx">−</span><span class="proj-count" data-target="4.7" data-dec="1">0.0</span><span class="msfx">%</span>
                     </div>
-                    <span class="proj-metric-lbl">JJ Proxy Cost</span>
+                    <span class="proj-metric-lbl">AQFP JJ Proxy</span>
                   </div>
                   <div class="proj-metric">
                     <div class="proj-metric-val proj-metric-val--text">
@@ -590,9 +595,10 @@
                 </div>
                 <h3 class="proj-title">Secure MIG Logic Synthesis — ISVLSI Extension Study</h3>
                 <p class="proj-desc">
-                  Benchmark suite and Vivado FPGA evaluation pipeline comparing AOIG, MIG, and mMIG
-                  for security-focused logic synthesis. Automates synthesis, implementation, and
-                  report generation across all three circuit variants for reproducible ISVLSI results.
+                  Benchmark evaluation suite for comparing AOIG, MIG, and mMIG synthesis results
+                  across standard benchmarks using Vivado. Packages scripts, Verilog netlists, and
+                  generated FPGA reports to enable one-click reproduction of the ISVLSI 2025 results
+                  presented in the accompanying paper.
                 </p>
                 <div class="proj-hls">
                   <div class="proj-hl"><i data-lucide="layers"></i><span>3 variants — AOIG, MIG, mMIG</span></div>
@@ -624,7 +630,7 @@
                     <div class="ptl ptl-sep">───────────────────────────</div>
                     <div class="ptl ptl-row">geomean   1.000 0.952  <span class="ptl-good">0.894</span></div>
                     <div class="ptl ptl-gap">&nbsp;</div>
-                    <div class="ptl ptl-ok">winner: mMIG ✓<span class="ptl-cur">▋</span></div>
+                    <div class="ptl ptl-ok">mMIG shows lower normalized cost in this summary<span class="ptl-cur">▋</span></div>
                   </div>
                 </div>
               </div><!-- /.proj-preview -->
@@ -645,9 +651,10 @@
                 </div>
                 <h3 class="proj-title">Folded-Bias Decomposition for Majority Logic Networks</h3>
                 <p class="proj-desc">
-                  Introduces folded-bias CSA as a construction method for odd-input majority functions.
-                  Provides two circuit approaches with automated Verilog/BLIF netlist generation
-                  and one-click reproduction via pre-committed CSV artifacts.
+                  Explores folded-bias carry-save adder (CSA) decomposition as a construction technique
+                  for threshold circuits realizing odd-input majority functions. Compares a baseline
+                  and a folded approach using automated Verilog/BLIF netlist generation; includes
+                  pre-committed CSV artifacts for one-click result reproduction.
                 </p>
                 <div class="proj-hls">
                   <div class="proj-hl"><i data-lucide="git-branch"></i><span>2 methods — folded-bias CSA &amp; baseline CSA</span></div>
@@ -670,18 +677,19 @@
                     <span class="proj-term-title">folded_bias_csa.py</span>
                   </div>
                   <div class="proj-term-body">
-                    <div class="ptl ptl-cmt"># folded-bias CSA for MAJ_n</div>
-                    <div class="ptl ptl-kw">def <span class="ptl-fn">gen_majority</span>(n, mode):</div>
-                    <div class="ptl ptl-dim">    k = (n - 1) // 2</div>
+                    <div class="ptl ptl-cmt"># folded-bias CSA construction for MAJ_n</div>
+                    <div class="ptl ptl-kw">def <span class="ptl-fn">build_majority</span>(n, mode):</div>
+                    <div class="ptl ptl-dim">    T = ceil(n / 2)</div>
                     <div class="ptl ptl-kw">    if <span class="ptl-str">mode == "folded"</span>:</div>
-                    <div class="ptl ptl-dim">        fa  = k</div>
-                    <div class="ptl ptl-dim">        lvl = k</div>
+                    <div class="ptl ptl-dim">        w = ceil(log2(T))</div>
+                    <div class="ptl ptl-dim">        K = 2**w - T</div>
+                    <div class="ptl ptl-dim">        netlist = emit_folded_bias_csa(n, K)</div>
                     <div class="ptl ptl-kw">    else:</div>
-                    <div class="ptl ptl-dim">        fa  = n - 1</div>
-                    <div class="ptl ptl-dim">        lvl = ceil(log2(n+1))</div>
-                    <div class="ptl ptl-kw">    return <span class="ptl-fn">Circuit</span>(fa, lvl)</div>
+                    <div class="ptl ptl-dim">        N = 2**ceil(log2(n + 1)) - 1</div>
+                    <div class="ptl ptl-dim">        netlist = emit_baseline_csa_threshold(n, N)</div>
+                    <div class="ptl ptl-kw">    return <span class="ptl-fn">report_counts_and_levels</span>(netlist)</div>
                     <div class="ptl ptl-gap">&nbsp;</div>
-                    <div class="ptl ptl-cmt"># MAJ_5: fa=2, levels=2<span class="ptl-cur">▋</span></div>
+                    <div class="ptl ptl-cmt"># MAJ_5: T=3, w=2, K=1<span class="ptl-cur">▋</span></div>
                   </div>
                 </div>
               </div><!-- /.proj-preview -->
@@ -703,7 +711,7 @@
                 <h3 class="proj-title">CP-SAT Driven Circuit Optimization Pipeline</h3>
                 <p class="proj-desc">
                   End-to-end pipeline for constraint-programming–guided logic optimization.
-                  Enumerates K-cuts from BLIF netlists, formulates a CP-SAT ILP for optimal
+                  Enumerates K-cuts from BLIF netlists, formulates a CP-SAT optimization model for
                   cut selection, then rebuilds the circuit. DAC'19 evaluation flow compatible.
                 </p>
                 <div class="proj-hls">
@@ -867,7 +875,7 @@
           <div class="pub-card pub-card-review">
             <div class="pub-year pub-year-review">—</div>
             <div class="pub-body">
-              <p class="pub-review-note"><i data-lucide="clock"></i> 3 journal / transaction manuscripts currently under review. Titles withheld pending publication.</p>
+              <p class="pub-review-note"><i data-lucide="clock"></i> Additional manuscripts under review at IEEE venues. Details available upon request.</p>
             </div>
           </div>
 
