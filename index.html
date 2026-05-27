@@ -107,26 +107,156 @@
       </div>
 
       <div class="container hero-content">
-        <div class="hero-eyebrow">
-          <span class="hero-label" data-scramble>PhD Candidate</span>
-          <span class="hero-sep">·</span>
-          <span class="hero-label-sub">CS &amp; Engineering, IIT Indore</span>
-        </div>
-        <h1 class="hero-name">
-          <span class="hero-word" data-scramble>Mrunal</span>
-          <span class="hero-word" data-scramble>Shende</span>
-        </h1>
-        <p class="hero-intro">
-          Researching logic synthesis, EDA algorithms, and solver-guided optimization
-          for hardware-efficient design. Building tools that bridge theoretical advances
-          in circuit optimization with practical, reproducible evaluation pipelines.
-        </p>
-        <div class="hero-actions">
-          <a href="#research"     class="btn btn-primary">View Research</a>
-          <a href="#publications" class="btn btn-secondary">Publications</a>
-          <a href="#contact"      class="btn btn-secondary">Contact</a>
-          <a href="mailto:phd2301101003@iiti.ac.in?subject=CV%20Request" class="btn btn-outline" id="resumeBtn">Resume / CV</a>
-        </div>
+        <div class="hero-inner">
+
+          <!-- ── Left column ── -->
+          <div class="hero-left">
+
+            <div class="hero-status">
+              <span class="hero-status-dot"></span>
+              <span>Open to Research Collaborations</span>
+            </div>
+
+            <h1 class="hero-name">
+              <span class="hero-word" data-scramble>Mrunal</span>
+              <span class="hero-word" data-scramble>Shende</span>
+            </h1>
+
+            <div class="hero-role">
+              <span class="hero-role-tag">PhD Candidate</span>
+              <span class="hero-role-sep">·</span>
+              <span class="hero-role-tag">IIT Indore</span>
+              <span class="hero-role-sep">·</span>
+              <span class="hero-role-tag">CSE / EDA</span>
+            </div>
+
+            <p class="hero-intro">
+              Logic synthesis, EDA algorithms, and solver-guided optimization
+              for hardware-efficient design.
+            </p>
+
+            <div class="hero-kpis">
+              <div class="hero-kpi">
+                <span class="hero-kpi-val">6</span>
+                <span class="hero-kpi-lbl">Papers</span>
+              </div>
+              <div class="hero-kpi-rule"></div>
+              <div class="hero-kpi">
+                <span class="hero-kpi-val">9</span>
+                <span class="hero-kpi-lbl">Citations</span>
+              </div>
+              <div class="hero-kpi-rule"></div>
+              <div class="hero-kpi">
+                <span class="hero-kpi-val">5+</span>
+                <span class="hero-kpi-lbl">Yrs Research</span>
+              </div>
+              <div class="hero-kpi-rule"></div>
+              <div class="hero-kpi">
+                <span class="hero-kpi-val">1</span>
+                <span class="hero-kpi-lbl">Industry</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#research"     class="btn btn-primary">View Research</a>
+              <a href="#publications" class="btn btn-secondary">Publications</a>
+              <a href="#contact"      class="btn btn-secondary">Contact</a>
+              <a href="mailto:phd2301101003@iiti.ac.in?subject=CV%20Request" class="btn btn-outline" id="resumeBtn">Resume / CV</a>
+            </div>
+
+          </div><!-- /.hero-left -->
+
+          <!-- ── Right column: animated mMIG graph ── -->
+          <div class="hero-right" aria-hidden="true">
+            <svg class="hero-graph" id="heroGraph" viewBox="0 0 340 392" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="hgGlowSm" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="3" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <!-- Layer 1→2 edges (inputs to MAJ gates) -->
+              <g class="hg-edges hg-edges-l1">
+                <line x1="48"  y1="50" x2="88"  y2="148" class="hg-edge"/>
+                <line x1="110" y1="50" x2="88"  y2="148" class="hg-edge"/>
+                <line x1="172" y1="50" x2="88"  y2="148" class="hg-edge hg-edge-long"/>
+                <line x1="110" y1="50" x2="172" y2="148" class="hg-edge"/>
+                <line x1="172" y1="50" x2="172" y2="148" class="hg-edge"/>
+                <line x1="234" y1="50" x2="172" y2="148" class="hg-edge"/>
+                <line x1="172" y1="50" x2="256" y2="148" class="hg-edge hg-edge-long"/>
+                <line x1="234" y1="50" x2="256" y2="148" class="hg-edge"/>
+                <line x1="296" y1="50" x2="256" y2="148" class="hg-edge"/>
+              </g>
+
+              <!-- Layer 2→3 edges (MAJ to mMIG gates) -->
+              <g class="hg-edges hg-edges-l2">
+                <line x1="88"  y1="148" x2="130" y2="248" class="hg-edge"/>
+                <line x1="172" y1="148" x2="130" y2="248" class="hg-edge"/>
+                <line x1="172" y1="148" x2="214" y2="248" class="hg-edge"/>
+                <line x1="256" y1="148" x2="214" y2="248" class="hg-edge"/>
+              </g>
+
+              <!-- Layer 3→output edges -->
+              <g class="hg-edges hg-edges-l3">
+                <line x1="130" y1="248" x2="172" y2="345" class="hg-edge hg-edge-out"/>
+                <line x1="214" y1="248" x2="172" y2="345" class="hg-edge hg-edge-out"/>
+              </g>
+
+              <!-- Input nodes -->
+              <g class="hg-layer hg-layer-1">
+                <g class="hg-node hg-node-inp" transform="translate(48,50)">
+                  <circle class="hg-nc" r="16"/><text class="hg-lbl">x₁</text>
+                </g>
+                <g class="hg-node hg-node-inp" transform="translate(110,50)">
+                  <circle class="hg-nc" r="16"/><text class="hg-lbl">x₂</text>
+                </g>
+                <g class="hg-node hg-node-inp hg-node-hot" transform="translate(172,50)">
+                  <circle class="hg-nc" r="16"/><text class="hg-lbl">x₃</text>
+                </g>
+                <g class="hg-node hg-node-inp" transform="translate(234,50)">
+                  <circle class="hg-nc" r="16"/><text class="hg-lbl">x₄</text>
+                </g>
+                <g class="hg-node hg-node-inp" transform="translate(296,50)">
+                  <circle class="hg-nc" r="16"/><text class="hg-lbl">x₅</text>
+                </g>
+              </g>
+
+              <!-- MAJ gate layer -->
+              <g class="hg-layer hg-layer-2">
+                <g class="hg-node hg-node-gate" transform="translate(88,148)">
+                  <circle class="hg-nc" r="20"/><text class="hg-lbl hg-lbl-g">M₁</text>
+                </g>
+                <g class="hg-node hg-node-gate hg-node-hot" transform="translate(172,148)">
+                  <circle class="hg-nc" r="20"/><text class="hg-lbl hg-lbl-g">M₂</text>
+                </g>
+                <g class="hg-node hg-node-gate" transform="translate(256,148)">
+                  <circle class="hg-nc" r="20"/><text class="hg-lbl hg-lbl-g">M₃</text>
+                </g>
+              </g>
+
+              <!-- mMIG gate layer -->
+              <g class="hg-layer hg-layer-3">
+                <g class="hg-node hg-node-mmig" transform="translate(130,248)">
+                  <circle class="hg-nc" r="22"/><text class="hg-lbl hg-lbl-m">mM₁</text>
+                </g>
+                <g class="hg-node hg-node-mmig" transform="translate(214,248)">
+                  <circle class="hg-nc" r="22"/><text class="hg-lbl hg-lbl-m">mM₂</text>
+                </g>
+              </g>
+
+              <!-- Output node -->
+              <g class="hg-node hg-node-out" transform="translate(172,345)">
+                <circle class="hg-out-ring" r="32"/>
+                <circle class="hg-nc hg-nc-out" r="22" filter="url(#hgGlowSm)"/>
+                <text class="hg-lbl hg-lbl-o">OUT</text>
+              </g>
+
+              <text x="170" y="385" class="hg-caption">mMIG topology · AQFP circuit synthesis</text>
+            </svg>
+          </div><!-- /.hero-right -->
+
+        </div><!-- /.hero-inner -->
       </div>
     </section>
 

@@ -593,6 +593,26 @@ document.addEventListener('DOMContentLoaded', () => {
      Draw line once wrap enters view; stagger each
      card in from the right as it crosses the fold.
      ══════════════════════════════════════════════ */
+  /* ── Hero graph draw-in ─────────────────────── */
+  (function initHeroGraph() {
+    function drawEdges(sel, delay) {
+      setTimeout(() => { const g = document.querySelector(sel); if (g) g.classList.add('hg-drawn'); }, delay);
+    }
+    function revealNodes(sel, baseDelay, stagger) {
+      document.querySelectorAll(sel).forEach((n, i) => {
+        setTimeout(() => n.classList.add('hg-vis'), baseDelay + i * stagger);
+      });
+    }
+    drawEdges('.hg-edges-l1', 600);
+    drawEdges('.hg-edges-l2', 1250);
+    drawEdges('.hg-edges-l3', 1800);
+    revealNodes('.hg-layer-1 .hg-node', 450, 90);
+    revealNodes('.hg-layer-2 .hg-node', 1100, 110);
+    revealNodes('.hg-layer-3 .hg-node', 1650, 130);
+    const out = document.querySelector('.hg-node-out');
+    if (out) setTimeout(() => out.classList.add('hg-vis'), 2150);
+  })();
+
   (function initTimeline() {
     const wrap = document.getElementById('tlWrap');
     if (!wrap) return;
