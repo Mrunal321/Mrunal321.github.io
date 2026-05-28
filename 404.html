@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Mrunal Shende</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0a1008" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefer = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || prefer);
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #0a1008; --bg-card: #131f10;
+      --text: #e8f0e4; --text-secondary: #8fa888; --text-muted: #4d6349;
+      --accent: #4ade80; --border: rgba(232,240,228,0.07);
+      --font-heading: 'Source Serif 4', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    [data-theme="light"] {
+      --bg: #fdf0ef; --bg-card: #ffffff;
+      --text: #1a0808; --text-secondary: #5a2020; --text-muted: #9a6060;
+      --accent: #b91c1c; --border: rgba(26,8,8,0.09);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-mono);
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .wrap {
+      text-align: center;
+      max-width: 520px;
+    }
+    .code {
+      font-family: var(--font-heading);
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      opacity: 0.18;
+      user-select: none;
+    }
+    .term {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 0 0 8px 8px;
+      padding: 1.4rem 1.6rem;
+      text-align: left;
+      margin: 1.5rem 0 2rem;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+    .t-dim  { color: var(--text-muted); }
+    .t-acc  { color: var(--accent); }
+    .t-err  { color: #f87171; }
+    .t-cur  { animation: blink 1.1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .home-btn {
+      display: inline-block;
+      padding: 0.65rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .home-btn:hover { background: var(--accent); color: var(--bg); }
+    .sub {
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <div class="term">
+      <div class="t-dim">$ resolve mrunalshende.me<span class="t-err">/???</span></div>
+      <div class="t-err">✗  route not found</div>
+      <div>&nbsp;</div>
+      <div class="t-dim">$ suggest --nearest</div>
+      <div><span class="t-acc">→</span>  mrunalshende.me<span class="t-acc">/</span>  (home)</div>
+      <div class="t-dim">   ↳ about · research · projects · publications</div>
+      <div>&nbsp;</div>
+      <div class="t-dim">$ _<span class="t-cur">▋</span></div>
+    </div>
+    <a href="/" class="home-btn">← back to home</a>
+    <p class="sub">mrunalshende.me · IIT Indore · CSE</p>
+  </div>
+</body>
+</html>

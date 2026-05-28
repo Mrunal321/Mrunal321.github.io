@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="geometricPrecision">
 
   <!-- Dark background -->
-  <rect width="32" height="32" rx="7" fill="#140000"/>
+  <rect width="32" height="32" rx="7" fill="#0a1008"/>
 
   <!-- Subtle teal border -->
   <rect width="32" height="32" rx="7" fill="none"
-        stroke="#5eaaa2" stroke-width="1.5" stroke-opacity="0.38"/>
+        stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.40"/>
 
   <!-- Faint radial glow from center -->
   <radialGradient id="g" cx="50%" cy="53%" r="48%">
-    <stop offset="0%"   stop-color="#5eaaa2" stop-opacity="0.12"/>
-    <stop offset="100%" stop-color="#140000" stop-opacity="0"/>
+    <stop offset="0%"   stop-color="#4ade80" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#0a1008" stop-opacity="0"/>
   </radialGradient>
   <rect width="32" height="32" rx="7" fill="url(#g)"/>
 
   <!-- M letterform — thick strokes, round joins -->
   <path d="M 5 26 L 5 6 L 16 17 L 27 6 L 27 26"
         fill="none"
-        stroke="#e8e0d4"
+        stroke="#e8f0e4"
         stroke-width="2.9"
         stroke-linecap="round"
         stroke-linejoin="round"/>
 
   <!-- Circuit-node halo ring at M valley -->
   <circle cx="16" cy="17" r="5.2" fill="none"
-          stroke="#5eaaa2" stroke-width="0.9" stroke-opacity="0.28"/>
+          stroke="#4ade80" stroke-width="0.9" stroke-opacity="0.28"/>
 
   <!-- Teal accent dot — circuit junction at M center -->
-  <circle cx="16" cy="17" r="3.1" fill="#5eaaa2"/>
+  <circle cx="16" cy="17" r="3.1" fill="#4ade80"/>
 
   <!-- Specular highlight on dot -->
-  <circle cx="14.9" cy="15.9" r="1.1" fill="#9fd4cd" opacity="0.55"/>
+  <circle cx="14.9" cy="15.9" r="1.1" fill="#86efac" opacity="0.55"/>
 
 </svg>

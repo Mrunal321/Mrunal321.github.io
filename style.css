@@ -93,6 +93,24 @@ body {
 }
 
 ::selection { background: var(--accent); color: #fff; }
+
+/* Scroll progress bar */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 999;
+    transform-origin: left;
+    box-shadow: 0 0 8px var(--accent);
+    transition: width 0.1s linear;
+}
+@media (max-width: 768px) {
+    #scrollProgress { left: 0; }
+}
 img  { max-width: 100%; display: block; }
 ul   { list-style: none; }
 
